@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic Microbiology &amp; Contamination Control | Duopharma Biotech Berhad</title>
+<style>
+/* ============================================================
+   DUOPHARMA BIOTECH BERHAD — THEME TOKENS
+   ============================================================ */
+:root{
+  --navy:#062B4F;
+  --blue:#0B5AA0;
+  --blue-l:#0E86D4;
+  --teal:#12B886;
+  --teal-d:#0E9E74;
+  --ink:#0B2A45;
+  --body:#3B4E63;
+  --muted:#6B8199;
+  --line:#DCE6F0;
+  --soft:#F2F8FD;
+  --amber:#B7791F;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:#fff;overflow:hidden;
+  background:
+    radial-gradient(1100px 620px at 8% -12%, rgba(18,184,134,.30), transparent 58%),
+    radial-gradient(900px 560px at 102% -6%, rgba(14,134,212,.42), transparent 55%),
+    radial-gradient(900px 700px at 50% 118%, rgba(18,184,134,.20), transparent 60%),
+    linear-gradient(158deg,#041E36 0%,#073056 38%,#06475F 72%,#04544E 100%);
+  background-attachment:fixed;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.09;z-index:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(circle at 50% 42%, #000 0%, transparent 76%);
+  mask-image:radial-gradient(circle at 50% 42%, #000 0%, transparent 76%);
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.app{position:relative;height:100vh;display:flex;flex-direction:column;z-index:1}
+
+.topbar{
+  flex:0 0 auto;display:flex;align-items:center;gap:14px;
+  padding:12px 26px 10px;
+}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:38px;height:38px;flex:0 0 auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.brand-name{display:flex;flex-direction:column;line-height:1}
+.brand-name strong{font-size:15px;letter-spacing:2.2px;font-weight:800;color:#fff}
+.brand-name span{font-size:8.5px;letter-spacing:3.1px;color:rgba(255,255,255,.62);margin-top:4px;font-weight:600}
+
+.topbar-title{
+  margin-left:auto;font-size:12px;letter-spacing:.6px;color:rgba(255,255,255,.62);
+  font-weight:600;text-transform:uppercase;display:none;
+}
+@media(min-width:900px){.topbar-title{display:block}}
+
+.icon-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:9px 16px;border-radius:999px;cursor:pointer;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.20);
+  color:#fff;font-size:12.5px;font-weight:700;letter-spacing:.5px;
+  transition:.2s;backdrop-filter:blur(6px);
+}
+.icon-btn:hover{background:rgba(255,255,255,.20);border-color:rgba(255,255,255,.4)}
+
+.progress{flex:0 0 auto;height:4px;background:rgba(255,255,255,.13);margin:0 26px;border-radius:4px;overflow:hidden}
+.progress > i{display:block;height:100%;width:0;border-radius:4px;
+  background:linear-gradient(90deg,var(--blue-l),var(--teal));
+  transition:width .35s cubic-bezier(.4,0,.2,1)}
+
+.stage{position:relative;flex:1 1 auto;min-height:0}
+
+/* ============================================================
+   SLIDE CARD
+   ============================================================ */
+.slide{
+  position:absolute;top:16px;left:26px;right:26px;bottom:14px;
+  background:linear-gradient(180deg,#FFFFFF 0%,#F6FAFE 100%);
+  border-radius:18px;color:var(--ink);
+  padding:26px 36px 30px;
+  overflow-y:auto;overflow-x:hidden;
+  box-shadow:0 26px 60px rgba(2,18,36,.48), 0 0 0 1px rgba(255,255,255,.14);
+  opacity:0;transform:translateY(18px) scale(.992);
+  pointer-events:none;
+  transition:opacity .34s ease, transform .34s cubic-bezier(.2,.8,.3,1);
+}
+.slide.active{opacity:1;transform:none;pointer-events:auto;z-index:2}
+.slide::-webkit-scrollbar{width:9px}
+.slide::-webkit-scrollbar-track{background:transparent}
+.slide::-webkit-scrollbar-thumb{background:#C9DBEA;border-radius:9px;border:2px solid #fff}
+.slide::-webkit-scrollbar-thumb:hover{background:#A9C3DA}
+
+/* Slide header */
+.slide-head{margin-bottom:16px;position:relative;padding-left:16px}
+.slide-head::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;width:5px;border-radius:5px;
+  background:linear-gradient(180deg,var(--blue-l),var(--teal));
+}
+.kicker{
+  display:block;font-size:10.5px;font-weight:800;letter-spacing:2.4px;
+  text-transform:uppercase;color:var(--teal-d);margin-bottom:5px;
+}
+.slide h2{margin:0;font-size:clamp(19px,2.05vw,27px);font-weight:800;color:var(--navy);letter-spacing:-.3px}
+.slide h3{margin:0 0 8px;font-size:15px;font-weight:800;color:var(--blue);letter-spacing:.1px}
+.slide h4{margin:0;font-size:14px;font-weight:800;color:var(--navy)}
+
+.lead{font-size:15.5px;line-height:1.65;color:var(--body);margin:0 0 16px;max-width:80ch}
+p{font-size:14px;line-height:1.62;color:var(--body);margin:0 0 10px}
+strong{color:var(--navy);font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 62%, rgba(18,184,134,.30) 62%);font-weight:600;color:var(--navy)}
+
+/* ============================================================
+   COVER
+   ============================================================ */
+.slide-cover{
+  background:
+    radial-gradient(700px 420px at 88% 8%, rgba(18,184,134,.30), transparent 60%),
+    radial-gradient(700px 480px at 6% 96%, rgba(14,134,212,.32), transparent 62%),
+    linear-gradient(150deg,#062B4F 0%,#0B5AA0 52%,#0B7C86 100%);
+  color:#fff;display:flex;flex-direction:column;justify-content:center;
+  border:1px solid rgba(255,255,255,.16);
+}
+.slide-cover::after{
+  content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.16) 1px, transparent 1px);
+  background-size:26px 26px;opacity:.35;
+  -webkit-mask-image:radial-gradient(circle at 80% 80%, #000, transparent 70%);
+  mask-image:radial-gradient(circle at 80% 80%, #000, transparent 70%);
+}
+.cover{position:relative;z-index:2;max-width:1000px}
+.cover-brand{display:flex;align-items:center;gap:14px;margin-bottom:34px}
+.cover-brand svg{width:56px;height:56px}
+.cover-brand .bt{display:flex;flex-direction:column;line-height:1}
+.cover-brand .bt strong{font-size:22px;letter-spacing:4px;font-weight:800;color:#fff}
+.cover-brand .bt span{font-size:10.5px;letter-spacing:5px;color:rgba(255,255,255,.68);margin-top:6px;font-weight:600}
+.slide-cover h1{
+  font-size:clamp(28px,4.3vw,54px);line-height:1.08;margin:0 0 16px;
+  font-weight:800;letter-spacing:-1.2px;color:#fff;
+}
+.slide-cover .cover-sub{
+  font-size:clamp(13px,1.35vw,17px);color:rgba(255,255,255,.86);
+  max-width:62ch;line-height:1.6;margin:0 0 30px;font-weight:500;
+}
+.cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;max-width:900px}
+.cover-meta > div{
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.20);
+  border-radius:12px;padding:12px 15px;backdrop-filter:blur(8px);
+}
+.cover-meta span{display:block;font-size:9.5px;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.62);font-weight:700;margin-bottom:5px}
+.cover-meta strong{display:block;font-size:13.5px;color:#fff;font-weight:700;line-height:1.35}
+.hint{margin-top:26px;font-size:12px;color:rgba(255,255,255,.55);letter-spacing:.4px}
+
+/* ============================================================
+   COMPONENTS
+   ============================================================ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+@media(max-width:780px){.grid2{grid-template-columns:1fr}}
+
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:16px 18px;box-shadow:0 3px 12px rgba(11,42,69,.05);
+  position:relative;overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--blue-l),var(--teal));
+}
+.card h4{margin-bottom:6px}
+.card p:last-child{margin-bottom:0}
+
+.card.tinted{background:linear-gradient(135deg,#F4FAFF,#EFFBF6)}
+
+.callout{
+  border-radius:12px;padding:14px 18px;margin-top:14px;
+  background:linear-gradient(135deg,#EAF6FF,#E9FBF3);
+  border:1px solid #C9E6F5;border-left:5px solid var(--teal);
+  font-size:13.5px;line-height:1.6;color:var(--body);
+}
+.callout strong{color:var(--navy)}
+.callout.warn{background:linear-gradient(135deg,#FFF8E9,#FFFDF6);border-color:#F0DFB6;border-left-color:#D69E2E}
+
+ul.checklist{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ul.checklist li{
+  position:relative;padding:10px 14px 10px 46px;border-radius:11px;
+  background:#F7FBFE;border:1px solid var(--line);
+  font-size:13.8px;line-height:1.55;color:var(--body);
+  transition:.2s;
+}
+ul.checklist li:hover{background:#EFF8FF;transform:translateX(3px)}
+ul.checklist li::before{
+  content:"✓";position:absolute;left:13px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--blue-l),var(--teal));
+  color:#fff;font-size:12px;font-weight:800;
+}
+ul.bullets{list-style:none;padding:0;margin:0 0 10px;display:grid;gap:8px}
+ul.bullets li{
+  position:relative;padding-left:22px;font-size:13.8px;line-height:1.58;color:var(--body);
+}
+ul.bullets li::before{
+  content:"";position:absolute;left:4px;top:9px;width:7px;height:7px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-l),var(--teal));
+}
+
+/* ── Factor tiles ─────────────────────────────── */
+.factors{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-top:6px}
+.factor{
+  text-align:left;background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:0;cursor:pointer;overflow:hidden;transition:.25s;font-family:inherit;
+}
+.factor:hover{border-color:#A9D8F0;box-shadow:0 8px 20px rgba(11,90,160,.10);transform:translateY(-2px)}
+.factor.open{border-color:var(--teal);box-shadow:0 10px 24px rgba(18,184,134,.16)}
+.factor-head{display:flex;align-items:center;gap:10px;padding:13px 15px}
+.factor-head .ico{font-size:18px;line-height:1}
+.factor-head h4{flex:1;font-size:13.5px}
+.factor-head .plus{
+  width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+  background:#EAF3FA;color:var(--blue);font-weight:800;font-size:13px;transition:.25s;
+}
+.factor.open .plus{transform:rotate(45deg);background:var(--teal);color:#fff}
+.factor-body{
+  max-height:0;overflow:hidden;transition:max-height .35s ease, padding .35s ease;
+  padding:0 15px;
+}
+.factor.open .factor-body{max-height:260px;padding:0 15px 14px}
+.factor-body p{font-size:12.8px;line-height:1.6;margin:0;color:var(--body)}
+
+/* ── Tabs ─────────────────────────────────────── */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 14px}
+.tab{
+  padding:9px 17px;border-radius:999px;border:1px solid var(--line);background:#fff;
+  color:var(--body);font-weight:700;font-size:12.5px;cursor:pointer;
+  transition:.22s;font-family:inherit;letter-spacing:.2px;
+}
+.tab:hover{border-color:var(--blue-l);color:var(--blue)}
+.tab.active{
+  background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border-color:transparent;
+  box-shadow:0 7px 18px rgba(11,90,160,.28);
+}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeUp .3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+
+/* ── Star map ─────────────────────────────────── */
+.star-map{
+  position:relative;height:320px;margin:4px 0 12px;border-radius:16px;
+  background:radial-gradient(circle at 50% 50%, rgba(14,134,212,.09), transparent 64%);
+  border:1px dashed #D8E7F2;
+}
+.star-core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:158px;height:158px;display:grid;place-items:center;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  background:linear-gradient(135deg,#0B5AA0,#12B886);
+  box-shadow:0 12px 30px rgba(11,90,160,.30);
+}
+.star-core span{font-size:11.5px;font-weight:800;letter-spacing:1.6px;color:#fff;padding-top:6px}
+.src{
+  position:absolute;left:var(--x);top:var(--y);
+  padding:10px 15px;border-radius:10px;border:1px solid rgba(11,90,160,.22);
+  background:#fff;color:var(--navy);font-weight:800;font-size:11.5px;letter-spacing:.7px;
+  cursor:pointer;box-shadow:0 6px 16px rgba(11,42,69,.10);transition:.22s;
+  white-space:nowrap;font-family:inherit;
+}
+.src:hover{transform:translateY(-3px);border-color:var(--teal);color:var(--blue)}
+.src.active{
+  background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;
+  border-color:transparent;box-shadow:0 10px 22px rgba(11,90,160,.30);
+}
+.src-detail{display:none}
+.src-detail.active{display:block;animation:fadeUp .28s ease}
+.src-detail .card{background:linear-gradient(135deg,#F4FAFF,#F0FBF6)}
+
+/* ── Flip cards ───────────────────────────────── */
+.flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:14px}
+.flip{perspective:1100px;height:230px;cursor:pointer}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-face{
+  position:absolute;inset:0;border-radius:15px;padding:20px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  display:flex;flex-direction:column;justify-content:center;gap:8px;
+}
+.flip-front{
+  background:linear-gradient(140deg,#0B5AA0,#0E86D4 55%,#12B886);
+  color:#fff;align-items:center;text-align:center;
+  box-shadow:0 12px 28px rgba(11,90,160,.28);
+}
+.flip-front .fi{font-size:26px}
+.flip-front h4{color:#fff;font-size:16px;letter-spacing:.4px}
+.flip-front small{color:rgba(255,255,255,.72);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700}
+.flip-back{
+  background:#fff;border:1px solid var(--line);transform:rotateY(180deg);
+  color:var(--body);font-size:13px;line-height:1.58;overflow:auto;
+}
+.flip-back strong{display:block;font-size:13.5px;color:var(--blue);margin-bottom:6px;letter-spacing:.3px}
+
+/* ── Quiz ─────────────────────────────────────── */
+.quiz-q{
+  background:#fff;border:1px solid var(--line);border-radius:13px;
+  padding:15px 18px;margin-bottom:12px;box-shadow:0 3px 12px rgba(11,42,69,.05);
+}
+.quiz-q .q-text{font-size:13.8px;font-weight:700;color:var(--navy);margin:0 0 11px;line-height:1.5}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
+.opt{
+  text-align:left;padding:10px 14px;border-radius:9px;border:1px solid var(--line);
+  background:#F8FBFE;color:var(--body);font-size:13px;font-weight:600;cursor:pointer;
+  transition:.2s;font-family:inherit;line-height:1.4;
+}
+.opt:hover{border-color:var(--blue-l);background:#EFF8FF;color:var(--blue)}
+.opt.right{background:linear-gradient(135deg,#E6F9F1,#D9F7EA);border-color:var(--teal);color:#0B6E52;font-weight:800}
+.opt.wrong{background:#FDECEC;border-color:#E57373;color:#B23A3A;font-weight:800}
+.opt:disabled{cursor:default}
+.feedback{
+  margin:10px 0 0;font-size:12.8px;line-height:1.55;font-weight:600;
+  display:none;padding:9px 13px;border-radius:9px;
+}
+.feedback.show{display:block;animation:fadeUp .25s ease}
+.feedback.ok{background:#E9FAF2;color:#0B6E52;border-left:4px solid var(--teal)}
+.feedback.no{background:#FDF0F0;color:#B23A3A;border-left:4px solid #E57373}
+.btn-ghost{
+  margin-top:6px;padding:9px 18px;border-radius:999px;cursor:pointer;font-family:inherit;
+  background:#fff;border:1px solid var(--line);color:var(--blue);font-weight:800;
+  font-size:12.5px;letter-spacing:.4px;transition:.2s;
+}
+.btn-ghost:hover{background:#EFF8FF;border-color:var(--blue-l)}
+
+/* ── Takeaway do/don't ────────────────────────── */
+.dd{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:780px){.dd{grid-template-columns:1fr}}
+.dd-col{border-radius:13px;padding:15px 18px;border:1px solid var(--line);background:#fff}
+.dd-col.do{background:linear-gradient(135deg,#F1FBF6,#FFFFFF);border-color:#C6EEDC}
+.dd-col.dont{background:linear-gradient(135deg,#FFF6F6,#FFFFFF);border-color:#F5D5D5}
+.dd-col h4{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:14px}
+.dd-col.do h4{color:#0B6E52}
+.dd-col.dont h4{color:#B23A3A}
+.dd-col ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.dd-col li{position:relative;padding-left:20px;font-size:13.2px;line-height:1.55;color:var(--body)}
+.dd-col.do li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:800}
+.dd-col.dont li::before{content:"✕";position:absolute;left:0;color:#E57373;font-weight:800}
+
+/* ============================================================
+   CONTROLS / MENU
+   ============================================================ */
+.controls{
+  flex:0 0 auto;display:flex;align-items:center;gap:12px;
+  padding:10px 26px 16px;
+}
+.nav-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;border-radius:999px;cursor:pointer;font-family:inherit;
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.22);
+  color:#fff;font-weight:700;font-size:13px;letter-spacing:.4px;
+  transition:.2s;backdrop-filter:blur(6px);
+}
+.nav-btn:hover:not(:disabled){background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.45)}
+.nav-btn:disabled{opacity:.32;cursor:not-allowed}
+.counter{
+  margin-left:auto;font-size:12.5px;font-weight:800;letter-spacing:1.4px;
+  color:rgba(255,255,255,.72);
+}
+.slide-title-mini{
+  font-size:12px;color:rgba(255,255,255,.55);font-weight:600;letter-spacing:.4px;
+  max-width:38vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:none;
+}
+@media(min-width:900px){.slide-title-mini{display:block}}
+
+.menu-overlay{
+  position:fixed;inset:0;z-index:50;background:rgba(3,17,32,.72);
+  backdrop-filter:blur(9px);opacity:0;pointer-events:none;transition:opacity .28s;
+  display:flex;justify-content:flex-end;
+}
+.menu-overlay.open{opacity:1;pointer-events:auto}
+.menu-panel{
+  width:min(430px,92vw);height:100%;background:linear-gradient(180deg,#062B4F,#073F5C);
+  border-left:1px solid rgba(255,255,255,.14);padding:24px 22px;overflow-y:auto;
+  transform:translateX(24px);transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+.menu-overlay.open .menu-panel{transform:none}
+.menu-panel h3{
+  font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
+  color:rgba(255,255,255,.6);margin:0 0 16px;font-weight:800;
+}
+.menu-item{
+  display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;
+  padding:11px 13px;border-radius:10px;margin-bottom:5px;cursor:pointer;
+  background:transparent;border:1px solid transparent;color:rgba(255,255,255,.80);
+  font-family:inherit;font-size:13px;font-weight:600;line-height:1.4;transition:.18s;
+}
+.menu-item span{color:rgba(255,255,255,.38);font-weight:800;font-size:11px;letter-spacing:.8px;padding-top:2px;min-width:20px}
+.menu-item:hover{background:rgba(255,255,255,.09);color:#fff}
+.menu-item.active{background:linear-gradient(135deg,rgba(14,134,212,.35),rgba(18,184,134,.32));
+  border-color:rgba(255,255,255,.22);color:#fff}
+.menu-close{
+  position:absolute;top:20px;right:22px;width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+  color:#fff;font-size:17px;cursor:pointer;display:grid;place-items:center;transition:.2s;
+}
+.menu-close:hover{background:rgba(255,255,255,.24)}
+
+/* print */
+@media print{
+  body{background:#fff;overflow:visible}
+  .topbar,.controls,.progress,.menu-overlay{display:none}
+  .slide{position:relative;opacity:1;transform:none;page-break-after:always;
+    box-shadow:none;border:1px solid #ddd;inset:auto;margin:0 0 12px;height:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ================= TOP BAR ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <!-- Duopharma Biotech corporate mark (stylised placeholder — swap with official logo) -->
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-label="Duopharma Biotech Berhad">
+        <defs>
+          <linearGradient id="lgA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0E86D4"/>
+            <stop offset="100%" stop-color="#12B886"/>
+          </linearGradient>
+        </defs>
+        <path d="M32 2 L56 16 V48 L32 62 L8 48 V16 Z" fill="url(#lgA)"/>
+        <path d="M32 15 c6.5 8.5 11 13 11 19.2 a11 11 0 0 1 -22 0 C21 28 25.5 23.5 32 15 z" fill="#ffffff" opacity=".96"/>
+        <circle cx="32" cy="34.5" r="3.6" fill="#0B5AA0"/>
+      </svg>
+      <div class="brand-name">
+        <strong>DUOPHARMA</strong>
+        <span>BIOTECH BERHAD</span>
+      </div>
+    </div>
+
+    <div class="topbar-title">Basic Microbiology &amp; Contamination Control</div>
+
+    <button class="icon-btn" id="menuBtn" aria-label="Open slide index">☰ Slides</button>
+  </header>
+
+  <div class="progress"><i></i></div>
+
+  <!-- ================= STAGE ================= -->
+  <main class="stage" id="stage">
+
+    <!-- ============ 1. COVER ============ -->
+    <section class="slide slide-cover active" data-title="Title">
+      <div class="cover">
+        <div class="cover-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="lgB" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#5FD0F5"/>
+                <stop offset="100%" stop-color="#26E0A8"/>
+              </linearGradient>
+            </defs>
+            <path d="M32 2 L56 16 V48 L32 62 L8 48 V16 Z" fill="url(#lgB)"/>
+            <path d="M32 15 c6.5 8.5 11 13 11 19.2 a11 11 0 0 1 -22 0 C21 28 25.5 23.5 32 15 z" fill="#062B4F" opacity=".9"/>
+          </svg>
+          <div class="bt">
+            <strong>DUOPHARMA</strong>
+            <span>BIOTECH BERHAD</span>
+          </div>
+        </div>
+
+        <h1>Basic Microbiology &amp;<br>Contamination Control</h1>
+        <p class="cover-sub">
+          Microbiology Module — Refresher Training for Sterile Manufacturing Personnel
+          in conjunction with the Aseptic Simulation Programme.
+        </p>
+
+        <div class="cover-meta">
+          <div><span>Programme</span><strong>Aseptic Simulation Refresher</strong></div>
+          <div><span>Prepared by</span><strong>Muhammad Firdaus Abdullah</strong></div>
+          <div><span>Department</span><strong>Quality Control — Sterile Manufacturing</strong></div>
+          <div><span>Year</span><strong>2025</strong></div>
+        </div>
+
+        <p class="hint">Navigate with ← → arrow keys, the buttons below, or press ☰ Slides for the index.</p>
+      </div>
+    </section>
+
+    <!-- ============ 2. OBJECTIVES ============ -->
+    <section class="slide" data-title="Learning Objectives">
+      <div class="slide-head">
+        <span class="kicker">Module Overview</span>
+        <h2>Learning Objectives</h2>
+      </div>
+      <p class="lead">By the end of this session, you will be able to:</p>
+      <ul class="checklist">
+        <li>Explain what microorganisms are and why they matter in sterile manufacturing</li>
+        <li>Describe the nature of microorganisms — harmless, beneficial and pathogenic</li>
+        <li>List the <strong>5 factors</strong> that affect microbial growth</li>
+        <li>Identify the <strong>5 major types</strong> of microorganisms</li>
+        <li>Classify microorganisms according to their oxygen requirement</li>
+        <li>Recognise the <strong>sources of contamination</strong> in a sterile facility</li>
+        <li>Understand environmental &amp; water monitoring, and why we do it</li>
+        <li>Apply the <strong>3 common methods</strong> used to reduce microbial contamination</li>
+      </ul>
+      <div class="callout">
+        <strong>Why this matters to you:</strong> the product we make cannot be seen for contamination.
+        Every gowning step, every movement and every material you bring into the cleanroom either protects
+        the patient — or puts them at risk.
+      </div>
+    </section>
+
+    <!-- ============ 3. INTRODUCTION ============ -->
+    <section class="slide" data-title="Introduction — What is Microbiology?">
+      <div class="slide-head">
+        <span class="kicker">Section 1 · Introduction</span>
+        <h2>What is Microbiology?</h2>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <p class="lead">
+            <strong>Microbiology</strong> is the science that studies living organisms that
+            <em>cannot be seen with the naked eye</em> — known as microorganisms or microbes.
+          </p>
+          <p>
+            Microorganisms are commonly known as <strong>germs</strong>. They are present in the air,
+            on surfaces, in water, on our skin and in our bodies — which is exactly why a sterile
+            manufacturing environment must be actively controlled.
+          </p>
+          <ul class="bullets">
+            <li>Invisible to the naked eye — we rely on monitoring, not on sight</li>
+            <li>Present everywhere — personnel are the closest and most constant source</li>
+            <li>Some grow in conditions we would consider hostile</li>
+          </ul>
+        </div>
+
+        <div class="grid2" style="grid-template-columns:1fr;gap:12px">
+          <div class="card">
+            <h4>Micro = Small</h4>
+            <p>Measured in micrometres. A single contaminated fingerprint can carry millions of organisms.</p>
+          </div>
+          <div class="card tinted">
+            <h4>Bio = Life</h4>
+            <p>They grow, multiply and adapt — provided the conditions favour them.</p>
+          </div>
+          <div class="card">
+            <h4>Logy = Study</h4>
+            <p>Understanding them lets us predict, monitor and control them.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>QC perspective:</strong> in 10 years of sterile QC, the single most common root cause of
+        environmental excursions I have investigated is <strong>personnel behaviour</strong> — not equipment.
+      </div>
+    </section>
+
+    <!-- ============ 4. NATURE OF MICROORGANISMS ============ -->
+    <section class="slide" data-title="Nature of Microorganisms">
+      <div class="slide-head">
+        <span class="kicker">Section 1 · Introduction</span>
+        <h2>Nature of Microorganisms</h2>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <h4>Pathogens</h4>
+          <p>Microorganisms that <strong>cause disease</strong>. These are the ones we are most concerned about in a sterile facility.</p>
+        </div>
+        <div class="card tinted">
+          <h4>Harmless</h4>
+          <p><strong>Most</strong> microorganisms are harmless to humans. Not every colony on a plate is a threat.</p>
+        </div>
+        <div class="card">
+          <h4>Beneficial</h4>
+          <p>Some microorganisms found in the body are <strong>beneficial</strong> to us — for example, gut flora that help digest food.</p>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:16px">
+        <strong>The "wrong place" principle:</strong> when a microorganism enters a part of the body
+        <em>other than where it is intended to be</em>, it can become harmful.
+        <br><br>
+        <strong>Example:</strong> <em>E. coli</em> normally lives in the colon, where it breaks down waste and
+        produces <strong>vitamin K</strong>. If it enters the <strong>urinary tract</strong>, the same organism
+        causes infection.
+      </div>
+
+      <div class="grid2" style="margin-top:16px">
+        <div class="card">
+          <h4>The same principle applies to product</h4>
+          <p>A microorganism that is harmless on intact skin can be harmful once it enters a sterile
+             injection, an open vial, or a patient's bloodstream. <strong>Route of entry defines risk.</strong></p>
+        </div>
+        <div class="card">
+          <h4>Our control strategy</h4>
+          <p>We do not try to kill everything everywhere. We <strong>prevent microorganisms from reaching
+             the product</strong> in the first place — through gowning, aseptic technique, cleaning and monitoring.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. FACTORS AFFECTING GROWTH ============ -->
+    <section class="slide" data-title="5 Factors Affecting Microbial Growth">
+      <div class="slide-head">
+        <span class="kicker">Section 1 · Introduction</span>
+        <h2>5 Factors That Affect the Growth of Microorganisms</h2>
+      </div>
+
+      <p class="lead">Tap each factor to see how it influences microbial survival — and how we use it against them.</p>
+
+      <div class="factors">
+        <button class="factor">
+          <div class="factor-head"><span class="ico">🌡️</span><h4>1. Temperature</h4><span class="plus">+</span></div>
+          <div class="factor-body"><p>Every microorganism has a temperature range in which it grows. Too cold slows or stops growth; too hot denatures proteins and kills the cell. Heat is one of our most reliable kill mechanisms — autoclave and dry heat.</p></div>
+        </button>
+
+        <button class="factor">
+          <div class="factor-head"><span class="ico">🧪</span><h4>2. pH</h4><span class="plus">+</span></div>
+          <div class="factor-body"><p>Most microorganisms prefer a near-neutral pH. Only a few live in acidic environments. pH therefore acts as a natural barrier — but it must be controlled and monitored, not assumed.</p></div>
+        </button>
+
+        <button class="factor">
+          <div class="factor-head"><span class="ico">💧</span><h4>3. Moisture</h4><span class="plus">+</span></div>
+          <div class="factor-body"><p>Water is essential for growth and for transporting nutrients into the cell. Dry surfaces and dry products are far less supportive of microbial growth — which is why standing water and damp residues are a red flag.</p></div>
+        </button>
+
+        <button class="factor">
+          <div class="factor-head"><span class="ico">🍽️</span><h4>4. Food</h4><span class="plus">+</span></div>
+          <div class="factor-body"><p>Microorganisms need carbon, nitrogen, minerals and vitamins. Product residues, dust, and leftover cleaning agents can all act as a food source. If you leave it, they will eat it.</p></div>
+        </button>
+
+        <button class="factor">
+          <div class="factor-head"><span class="ico">🫧</span><h4>5. Oxygen</h4><span class="plus">+</span></div>
+          <div class="factor-body"><p><strong>Aerobic</strong> microorganisms grow best with high levels of oxygen, while <strong>anaerobic</strong> microorganisms grow best in the absence of oxygen. This is why different process areas carry different risks.</p></div>
+        </button>
+      </div>
+
+      <div class="callout">
+        These factors must be <strong>favourable</strong> if microorganisms are to live — and
+        <strong>different microorganisms require different conditions</strong> for survival.
+        Remove or control any one factor and growth is suppressed.
+      </div>
+    </section>
+
+    <!-- ============ 6. TYPES OF MICROORGANISMS ============ -->
+    <section class="slide" data-title="5 Major Types of Microorganisms">
+      <div class="slide-head">
+        <span class="kicker">Section 2 · Types of Microorganism</span>
+        <h2>The 5 Major Types of Microorganisms</h2>
+      </div>
+
+      <div>
+        <div class="tabs">
+          <button class="tab active" data-tab="bacteria">🦠 Bacteria</button>
+          <button class="tab" data-tab="fungi">🍄 Fungi</button>
+          <button class="tab" data-tab="protozoa">🔬 Protozoa (protists)</button>
+          <button class="tab" data-tab="parasites">🪱 Parasites (rickettsia)</button>
+          <button class="tab" data-tab="viruses">🧬 Viruses</button>
+        </div>
+
+        <div class="tab-panel active" data-panel="bacteria">
+          <div class="grid2">
+            <div>
+              <h3>Bacteria</h3>
+              <ul class="bullets">
+                <li>Single-celled organisms that multiply by binary fission</li>
+                <li>Found everywhere — air, water, skin, surfaces, dust</li>
+                <li>Typical cleanroom isolates: <em>Staphylococcus</em>, <em>Micrococcus</em>, <em>Pseudomonas</em>, <em>Bacillus</em></li>
+                <li>Endospore formers (<em>Bacillus</em>, <em>Clostridium</em>) survive harsh conditions and resist many disinfectants</li>
+              </ul>
+            </div>
+            <div class="card tinted">
+              <h4>Why it matters in sterile manufacturing</h4>
+              <p>Bacteria are the most frequently recovered organisms in environmental monitoring.
+                 Gram-positive cocci usually point to <strong>personnel</strong>; Gram-negative rods often point to
+                 <strong>water or moisture</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="fungi">
+          <div class="grid2">
+            <div>
+              <h3>Fungi (Yeasts &amp; Moulds)</h3>
+              <ul class="bullets">
+                <li>Grow well in moist environments</li>
+                <li>Tolerate more acidic conditions than most bacteria</li>
+                <li>Moulds produce spores that travel easily in air currents</li>
+                <li>Common environmental isolates in cleanrooms and HVAC systems</li>
+              </ul>
+            </div>
+            <div class="card tinted">
+              <h4>Why it matters in sterile manufacturing</h4>
+              <p>Fungal spores are resilient and can survive for long periods on surfaces. They are monitored
+                 using <strong>SDA (Sabouraud Dextrose Agar)</strong> alongside TSA.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="protozoa">
+          <div class="grid2">
+            <div>
+              <h3>Protozoa (Protists)</h3>
+              <ul class="bullets">
+                <li>Single-celled organisms, generally larger than bacteria</li>
+                <li>Mostly water-borne</li>
+                <li>Some form cysts that are highly resistant to disinfection</li>
+              </ul>
+            </div>
+            <div class="card tinted">
+              <h4>Why it matters in sterile manufacturing</h4>
+              <p>Rarely a direct product contaminant in aseptic processing, but relevant to water system
+                 control and to the broader microbiology picture.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="parasites">
+          <div class="grid2">
+            <div>
+              <h3>Parasites (Rickettsia)</h3>
+              <ul class="bullets">
+                <li><em>Rickettsia</em> are obligate intracellular bacteria, usually transmitted by vectors such as ticks</li>
+                <li>Parasites generally require a host to complete their life cycle</li>
+                <li>Not cultivable on standard environmental monitoring media</li>
+              </ul>
+            </div>
+            <div class="card tinted">
+              <h4>Why it matters in sterile manufacturing</h4>
+              <p>Not a typical cleanroom isolate, but part of the microbiology knowledge base — and relevant
+                 to personnel health and fitness-to-work assessments.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" data-panel="viruses">
+          <div class="grid2">
+            <div>
+              <h3>Viruses</h3>
+              <ul class="bullets">
+                <li>The smallest of all microorganisms</li>
+                <li>Cannot reproduce on their own — they must use a host cell</li>
+                <li>They do not grow or multiply in product</li>
+                <li>They can be carried and transferred by people</li>
+              </ul>
+            </div>
+            <div class="card tinted">
+              <h4>Why it matters in sterile manufacturing</h4>
+              <p>Control relies on <strong>aseptic behaviour, gowning and personal hygiene</strong> — not on
+                 product testing. A virus will not show up on a settle plate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. GROWTH CLASSIFICATION ============ -->
+    <section class="slide" data-title="Microbial Growth Classification">
+      <div class="slide-head">
+        <span class="kicker">Section 2 · Types of Microorganism</span>
+        <h2>Microbial Growth Classification</h2>
+      </div>
+
+      <p class="lead">Microorganisms are also classified by their oxygen requirement.</p>
+
+      <div class="grid3">
+        <div class="card">
+          <h4>🫧 Aerobic Microbes</h4>
+          <p>Live <strong>only in the presence of oxygen</strong>. If oxygen is excluded, they will not grow.</p>
+        </div>
+        <div class="card">
+          <h4>🚫 Anaerobic Microbes</h4>
+          <p>Grow <strong>best in the absence of oxygen</strong>. Oxygen is toxic or inhibitory to them.</p>
+        </div>
+        <div class="card tinted">
+          <h4>🔄 Facultative Anaerobic Microbes</h4>
+          <p>Can grow in <strong>both the presence and the absence</strong> of oxygen. The most adaptable — and often the most difficult to control.</p>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:18px">
+        <strong>Practical implication:</strong> the same organism can behave differently in different parts of
+        the process. A closed vessel, a stagnant water line and an open filling zone each favour a different
+        population. This is why we monitor <strong>multiple locations</strong> — not just one.
+      </div>
+
+      <div class="grid2" style="margin-top:16px">
+        <div class="card">
+          <h4>Where we look for aerobes</h4>
+          <p>Air, surfaces, gowning, settle plates, active air samples — the standard viable monitoring programme.</p>
+        </div>
+        <div class="card">
+          <h4>Where anaerobes hide</h4>
+          <p>Purified water and WFI loops, stagnant lines, poorly drained equipment, biofilm in dead legs.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. SOURCES OF CONTAMINATION ============ -->
+    <section class="slide" data-title="Sources of Contamination">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Sources of Contamination</h2>
+      </div>
+
+      <p class="lead">Contamination is considered any <strong>foreign environmental, chemical or biological matter</strong>. Select a source to see how it reaches the product.</p>
+
+      <div class="star-map">
+        <div class="star-core"><span>PRODUCT</span></div>
+        <button class="src" data-src="people"    style="--x:1%;  --y:2%;">PEOPLE</button>
+        <button class="src" data-src="materials" style="--x:71%; --y:0%;">RAW MATERIALS</button>
+        <button class="src" data-src="water"     style="--x:76%; --y:66%;">WATER</button>
+        <button class="src" data-src="air"       style="--x:33%; --y:86%;">AIR &amp; SURFACES</button>
+        <button class="src" data-src="equipment" style="--x:0%;  --y:64%;">EQUIPMENT</button>
+      </div>
+
+      <div>
+        <div class="src-detail active" data-detail="people">
+          <div class="card">
+            <h4>i) People — the number one source</h4>
+            <ul class="bullets">
+              <li>Shedding of cells, skin flakes and oils</li>
+              <li>Inappropriate gowning</li>
+              <li>Exposed skin, hair or clothing</li>
+              <li>Incorrectly wearing cleanroom attire</li>
+              <li>Bringing additional items into clean areas</li>
+              <li>Jewellery, shoes, clothing, purses, keys, cell phones</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="src-detail" data-detail="equipment">
+          <div class="card">
+            <h4>ii) Equipment</h4>
+            <ul class="bullets">
+              <li>Improper design — hard-to-clean surfaces, crevices, dead legs</li>
+              <li>Improper and ineffective cleaning — leading to <strong>cross contamination</strong></li>
+              <li>Inadequate maintenance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="src-detail" data-detail="materials">
+          <div class="card">
+            <h4>iv) Materials / Containers / Closures</h4>
+            <ul class="bullets">
+              <li>Contaminated incoming materials</li>
+              <li>Mishandled components</li>
+              <li>Improper storage</li>
+              <li>Cardboard, wood pallets and packing materials — <strong>never allowed</strong> in controlled areas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="src-detail" data-detail="water">
+          <div class="card">
+            <h4>Water</h4>
+            <ul class="bullets">
+              <li>Purified Water and Water for Injection are prime microbial habitats if not controlled</li>
+              <li>Biofilm formation in pipework, dead legs and stagnant loops</li>
+              <li>Monitored by viable counts, bioburden, filtration, pour plates and chemistry (pH, conductivity, TOC)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="src-detail" data-detail="air">
+          <div class="card">
+            <h4>v) Environment — Air, Surfaces &amp; Facilities</h4>
+            <ul class="bullets">
+              <li>Air, surfaces, temperature, humidity and water</li>
+              <li>Insufficient cleaning</li>
+              <li>Inappropriate facility design and pest control issues</li>
+              <li>Cardboard, wood pallets and other particle generators</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9. COMPONENTS OF CONTAMINATION CONTROL ============ -->
+    <section class="slide" data-title="Components of a Contamination Control Programme">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Components of a Contamination Control Programme</h2>
+      </div>
+
+      <p class="lead">
+        <strong>Definition:</strong> proactive prevention of contamination — to ensure product is free of
+        foreign matter, that appropriate control measures exist, that environments and product contact areas
+        do not contribute to contamination, that gowning practices and materials/containers/closures are
+        controlled, and that all of this is documented.
+      </p>
+
+      <div class="grid3">
+        <div class="card"><h4>i) Compliance Assessment</h4><p>Guidelines, regulations, process and facility evaluation.</p></div>
+        <div class="card"><h4>ii) Product Testing</h4><p>Chemical and microbiological purity using validated methods.</p></div>
+        <div class="card"><h4>iii) Environmental Monitoring</h4><p>Viable / non-viable, utilities, materials, components.</p></div>
+        <div class="card"><h4>iv) Equipment Qualification &amp; Cleaning Validation</h4><p>Documented evidence of design, cleaning and maintenance.</p></div>
+        <div class="card"><h4>v) Facility Design</h4><p>Segregation, flow, sanitary design, pest control.</p></div>
+        <div class="card"><h4>vi) Disinfectant Practices</h4><p>Correct agent, correct contact time, correct surface.</p></div>
+        <div class="card tinted"><h4>vii) Training</h4><p>Operators, lab personnel, engineers and support groups.</p></div>
+      </div>
+
+      <div class="callout">
+        <strong>Remember:</strong> contamination control is a <em>system</em>. One weak component — usually training
+        or behaviour — will compromise all the others.
+      </div>
+    </section>
+
+    <!-- ============ 10. ENVIRONMENTAL MONITORING ============ -->
+    <section class="slide" data-title="Environmental Monitoring — Viable">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Environmental Monitoring — Viable Monitoring</h2>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h3>Media</h3>
+          <ul class="bullets">
+            <li><strong>TSA</strong> — Tryptic Soy Agar (total aerobic microbial count)</li>
+            <li><strong>SDA</strong> — Sabouraud Dextrose Agar (yeasts and moulds)</li>
+          </ul>
+
+          <h3 style="margin-top:14px">Air</h3>
+          <ul class="bullets">
+            <li><strong>Active air sampling</strong> — a known volume of air is drawn over the medium</li>
+            <li><strong>Air filtration</strong> — HEPA filtration as the primary barrier</li>
+            <li><strong>Passive air sampling</strong> — settle plates, exposed for a defined time</li>
+          </ul>
+
+          <h3 style="margin-top:14px">Surfaces</h3>
+          <ul class="bullets">
+            <li><strong>Contact plates</strong> — direct contact with flat surfaces</li>
+            <li><strong>Swabs</strong> — for irregular, recessed or hard-to-reach areas</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <h4>Static vs Dynamic</h4>
+            <p><strong>Static</strong> — monitoring performed with no activity in the area.<br>
+               <strong>Dynamic</strong> — monitoring performed with activity, i.e. during operation.
+               Dynamic results reflect the real manufacturing risk.</p>
+          </div>
+
+          <div class="card" style="margin-bottom:12px">
+            <h4>Physical Parameters</h4>
+            <ul class="bullets">
+              <li>Temperature &amp; Relative Humidity (R/H)</li>
+              <li>Differential pressures between classified areas</li>
+            </ul>
+          </div>
+
+          <div class="card tinted">
+            <h4>Controlled Access</h4>
+            <p>A documented procedure must detail <strong>what can and cannot</strong> be brought into
+               manufacturing areas.</p>
+            <p style="margin-top:8px"><strong>Never permitted:</strong> cardboard, wood products/pallets, packing materials.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 11. WATER MONITORING ============ -->
+    <section class="slide" data-title="Environmental Monitoring — Water &amp; Utilities">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Environmental Monitoring — Water &amp; Utilities</h2>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Microbiological Testing</h4>
+          <ul class="bullets">
+            <li><strong>Purified Water &amp; WFI</strong> — sampled at defined points on a defined frequency</li>
+            <li><strong>Viable counts</strong> — enumeration of recovered organisms</li>
+            <li><strong>Bioburden</strong> — total microbial load of the sample</li>
+            <li><strong>Filtration</strong> — membrane filtration through 0.45 µm membrane</li>
+            <li><strong>Pour plates</strong> — for enumeration where appropriate</li>
+          </ul>
+        </div>
+
+        <div class="card tinted">
+          <h4>Chemical Testing</h4>
+          <ul class="bullets">
+            <li><strong>pH</strong></li>
+            <li><strong>Conductivity</strong></li>
+            <li><strong>TOC</strong> — Total Organic Carbon</li>
+          </ul>
+          <p style="margin-top:10px">
+            Chemistry and microbiology go hand in hand: organic carbon feeds microorganisms, and
+            conductivity excursions often precede microbial excursions.
+          </p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Utility monitoring</strong> also covers <strong>gases, water and compressed air</strong> — any utility
+        that contacts the product or a product-contact surface is a potential contamination route.
+      </div>
+
+      <div class="callout warn">
+        <strong>Operator reminder:</strong> never take a water sample from a flushed-and-forgotten point without
+        following the sampling SOP. A bad sample is worse than no sample — it gives false assurance.
+      </div>
+    </section>
+
+    <!-- ============ 12. INCOMING GOODS ============ -->
+    <section class="slide" data-title="Evaluation of Incoming Goods">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Evaluation of Incoming Goods</h2>
+      </div>
+
+      <p class="lead">Contamination control starts <em>before</em> materials reach the cleanroom.</p>
+
+      <div class="grid3">
+        <div class="card"><h4>Raw Materials</h4><p>Must meet the <strong>Certificate of Analysis (COA)</strong> and internal specifications.</p></div>
+        <div class="card"><h4>Vendor Selection</h4><p>Approved suppliers with a demonstrated quality history.</p></div>
+        <div class="card"><h4>Quality</h4><p>Conformance to specification — every batch, every time.</p></div>
+        <div class="card"><h4>Bioburden</h4><p>Microbial limits must be established and met.</p></div>
+        <div class="card"><h4>Identity</h4><p>Correct material — verified, not assumed.</p></div>
+        <div class="card"><h4>Containers &amp; Closures</h4><p>Assessed for cleanliness and compatibility.</p></div>
+        <div class="card"><h4>Certificate of Analysis</h4><p>Reviewed against internal specification before release.</p></div>
+        <div class="card"><h4>Cleanliness</h4><p>Free from particulate and microbial contamination.</p></div>
+        <div class="card tinted"><h4>Storage &amp; Handling</h4><p>Controlled conditions, appropriate transfer and protection.</p></div>
+      </div>
+
+      <div class="callout">
+        <strong>Transfer discipline:</strong> materials must be transferred into the cleanroom using the approved
+        route and method. Outer packaging stays outside — always.
+      </div>
+    </section>
+
+    <!-- ============ 13. EQUIPMENT QUALIFICATION & FACILITY ============ -->
+    <section class="slide" data-title="Equipment Qualification &amp; Facility Design">
+      <div class="slide-head">
+        <span class="kicker">Section 3 · Contamination Control</span>
+        <h2>Equipment Qualification &amp; Facility Design</h2>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h4>Equipment Qualification &amp; Cleaning Validation</h4>
+          <ul class="bullets">
+            <li>Documented studies to support the equipment</li>
+            <li>Equipment is of appropriate design</li>
+            <li>Materials of construction are suitable for the environment</li>
+            <li>Meets the intended need</li>
+            <li>Effective equipment cleaning &amp; maintenance procedures</li>
+            <li>Cleaning history and maintenance history maintained</li>
+            <li>Compatibility of cleaning agents confirmed</li>
+            <li>Removal of cleaning agent confirmed</li>
+          </ul>
+        </div>
+
+        <div class="card tinted">
+          <h4>Facility Design &amp; Control</h4>
+          <ul class="bullets">
+            <li>Segregation of process areas from mechanical / utility areas</li>
+            <li>Orderly operational flows for <strong>personnel, materials and processes</strong></li>
+            <li>Group similar types of operations</li>
+            <li>Sanitary design — cleanable, smooth, non-shedding surfaces</li>
+            <li>Pest control — baits and traps</li>
+            <li>Clean and orderly at all times</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Compliance assessment</strong> underpins all of this — evaluated against NPRA and foreign agency
+        requirements, and against the specific nature of the process (oral solid dose vs liquid, toxic compounds,
+        dusty operations, open vs closed operations, single-use vs dedicated, room classification, barriers
+        or isolators, and disinfectant selection).
+      </div>
+    </section>
+
+    <!-- ============ 14. 3 COMMON METHODS ============ -->
+    <section class="slide" data-title="3 Common Methods to Reduce Contamination">
+      <div class="slide-head">
+        <span class="kicker">Section 4 · Methods to Reduce Contamination</span>
+        <h2>3 Common Methods to Reduce Microbial Contamination</h2>
+      </div>
+
+      <p class="lead">Everything we have discussed so far comes down to three practical control methods.</p>
+
+      <div class="grid3">
+        <div class="card">
+          <h4>1️⃣ Aseptic Technique</h4>
+          <p>Procedures performed under sterile conditions — keeping an area completely free of microorganisms.</p>
+        </div>
+        <div class="card">
+          <h4>2️⃣ Disinfection</h4>
+          <p>IPA &amp; Sodium Hypochlorite — slow or prevent the growth of pathogens on surfaces and hands.</p>
+        </div>
+        <div class="card tinted">
+          <h4>3️⃣ Sterilization</h4>
+          <p>The process that renders an article, surface or medium free from <strong>all</strong> microorganisms, including spores.</p>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:18px">
+        <strong>Critical distinction:</strong> aseptic technique and disinfection alone are
+        <strong>not effective against spores</strong>. Only sterilization kills spores.
+      </div>
+    </section>
+
+    <!-- ============ 15. ASEPTIC TECHNIQUE ============ -->
+    <section class="slide" data-title="Aseptic Technique">
+      <div class="slide-head">
+        <span class="kicker">Section 4 · Methods to Reduce Contamination</span>
+        <h2>Aseptic Technique</h2>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <ul class="bullets">
+            <li>A procedure that is performed under <strong>sterile conditions</strong></li>
+            <li>Includes medical and laboratory techniques dealing with cultures and human cells and tissue for transplantation</li>
+            <li><strong>Keeping an area completely free of microorganisms</strong></li>
+            <li><strong>Only sterile objects can come in contact with sterile objects.</strong> Otherwise, they must be considered contaminated</li>
+          </ul>
+        </div>
+
+        <div class="card tinted">
+          <h4>Purpose in our environment</h4>
+          <ul class="bullets">
+            <li>To prevent the access of microorganisms during sample preparation and testing</li>
+            <li>To prevent cross contamination from the environment and personnel to the sample we are working with</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:18px">
+        <strong>The one rule to remember:</strong> if a sterile object touches anything that is not sterile —
+        or if you are unsure whether it is sterile — <strong>it is contaminated</strong>. Discard it and start again.
+        There is no "probably still fine".
+      </div>
+    </section>
+
+    <!-- ============ 16. KEY TERMS ============ -->
+    <section class="slide" data-title="Key Terms — Sterilization, Disinfection, Antisepsis">
+      <div class="slide-head">
+        <span class="kicker">Section 4 · Methods to Reduce Contamination</span>
+        <h2>Some Terms You Must Know</h2>
+      </div>
+
+      <p class="lead">Tap each card to reveal the definition.</p>
+
+      <div class="flip-grid">
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="fi">🔥</span>
+              <h4>Sterilization</h4>
+              <small>Tap to reveal</small>
+            </div>
+            <div class="flip-face flip-back">
+              <strong>Sterilization</strong>
+              It is the process by which an article, surface or medium is made free from
+              <strong>all microorganisms</strong>, either in the vegetative or spore state.
+            </div>
+          </div>
+        </div>
+
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="fi">🧴</span>
+              <h4>Disinfection</h4>
+              <small>Tap to reveal</small>
+            </div>
+            <div class="flip-face flip-back">
+              <strong>Disinfection</strong>
+              It is the process by which an article, surface or medium is made free from all
+              <strong>pathogenic microorganisms</strong> — that is, organisms capable of giving rise to infection.
+            </div>
+          </div>
+        </div>
+
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="fi">🛡️</span>
+              <h4>Antisepsis</h4>
+              <small>Tap to reveal</small>
+            </div>
+            <div class="flip-face flip-back">
+              <strong>Antisepsis</strong>
+              It is the process by which the growth of bacteria is <strong>inhibited</strong> —
+              but they are <strong>not killed</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:18px">
+        <strong>Know the difference:</strong> sterilization <em>kills everything</em>; disinfection
+        <em>kills pathogens</em>; antisepsis <em>only inhibits growth</em>. Using the wrong one for the wrong
+        application is a deviation waiting to happen.
+      </div>
+    </section>
+
+    <!-- ============ 17. DISINFECTION ============ -->
+    <section class="slide" data-title="Disinfection — IPA &amp; Sodium Hypochlorite">
+      <div class="slide-head">
+        <span class="kicker">Section 4 · Methods to Reduce Contamination</span>
+        <h2>Disinfection — IPA &amp; Sodium Hypochlorite</h2>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <ul class="bullets">
+            <li>Disinfection <strong>slows or prevents the growth of pathogens</strong></li>
+            <li>Disinfecting a surface will "kill" the microscopic organisms <strong>as claimed on the label</strong> of that particular product</li>
+            <li>Effectiveness depends on correct concentration, correct contact time and correct application</li>
+          </ul>
+
+          <div class="card" style="margin-top:12px">
+            <h4>Understand the environment before you disinfect</h4>
+            <ul class="bullets">
+              <li>Cleanliness required</li>
+              <li>Type and amount of organic matter / microorganisms present</li>
+              <li>Surface type</li>
+              <li>Potential for deterioration or corrosion</li>
+              <li>Type of water available</li>
+              <li><strong>Contact time</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid2" style="grid-template-columns:1fr;gap:12px">
+          <div class="card tinted">
+            <h4>Isopropyl Alcohol (IPA)</h4>
+            <p>Fast-acting, evaporates cleanly, ideal for glove sanitisation, small surfaces and
+               transfer hatches. <strong>Not sporicidal</strong> — it does not kill bacterial spores.</p>
+          </div>
+          <div class="card tinted">
+            <h4>Sodium Hypochlorite</h4>
+            <p>Broader spectrum, with sporicidal activity at the correct concentration and contact time.
+               Used for floors, walls and controlled surface disinfection. <strong>Corrosive</strong> to some
+               materials — and must be rinsed where required.</p>
+          </div>
+          <div class="card">
+            <h4>The golden rule</h4>
+            <p>Disinfectant applied and immediately wiped dry has <strong>not</strong> worked.
+               Contact time is part of the method, not an optional extra.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 18. STERILIZATION ============ -->
+    <section class="slide" data-title="Sterilization Methods">
+      <div class="slide-head">
+        <span class="kicker">Section 4 · Methods to Reduce Contamination</span>
+        <h2>Sterilization</h2>
+      </div>
+
+      <p class="lead">
+        Sterilization uses validated methods to kill <strong>all</strong> microorganisms, including spores.
+        Aseptic technique and disinfection alone are <em>not</em> effective against spores — sterilization is.
+      </p>
+
+      <div class="grid3">
+        <div class="card">
+          <h4>♨️ Autoclave</h4>
+          <p>Uses <strong>steam under pressure</strong> to kill all microorganisms. The primary sterilization
+             method in sterile manufacturing.</p>
+        </div>
+        <div class="card">
+          <h4>🧪 Chemical (Chemiclave)</h4>
+          <p>Uses chemical solutions when <strong>heat cannot be used</strong> — for heat-sensitive instruments
+             and materials.</p>
+        </div>
+        <div class="card">
+          <h4>🔥 Dry Heat</h4>
+          <p>Used when heat or chemicals cannot be used. Requires higher temperature and longer exposure
+             than steam.</p>
+        </div>
+        <div class="card">
+          <h4>💨 Gas</h4>
+          <p>Used in hospitals. Takes <strong>longer than steam</strong> and requires careful aeration to remove
+             residual gas.</p>
+        </div>
+        <div class="card tinted">
+          <h4>📡 Microwave</h4>
+          <p>Low-pressure steam combined with radiation to produce <strong>localised heat</strong> that kills
+             microorganisms.</p>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:18px">
+        <strong>Cycle validation matters:</strong> sterilization is only effective when the load, the
+        cycle parameters and the monitoring (biological indicators, chemical indicators, physical parameters)
+        are all correct and documented.
+      </div>
+    </section>
+
+    <!-- ============ 19. OPERATOR TAKEAWAYS ============ -->
+    <section class="slide" data-title="Your Role — Cleanroom Do's &amp; Don'ts">
+      <div class="slide-head">
+        <span class="kicker">Bringing It Back to the Floor</span>
+        <h2>Your Role — Cleanroom Do's &amp; Don'ts</h2>
+      </div>
+
+      <div class="dd">
+        <div class="dd-col do">
+          <h4>✔ Always</h4>
+          <ul>
+            <li>Gown correctly, in the correct sequence, every single time</li>
+            <li>Perform hand hygiene before gloving and after any breach</li>
+            <li>Keep movements slow, deliberate and controlled</li>
+            <li>Stay within your validated area of operation</li>
+            <li>Report any gowning breach, spill or unusual observation immediately</li>
+            <li>Use only approved materials transferred via the approved route</li>
+            <li>Respect contact time when disinfecting</li>
+          </ul>
+        </div>
+
+        <div class="dd-col dont">
+          <h4>✕ Never</h4>
+          <ul>
+            <li>Bring cardboard, wood pallets or packing materials into controlled areas</li>
+            <li>Bring cell phones, keys, purses, jewellery or personal items inside</li>
+            <li>Leave skin, hair or street clothing exposed</li>
+            <li>Reach over an open product or sterile surface</li>
+            <li>Rush — rapid movement sheds particles and disrupts unidirectional airflow</li>
+            <li>Assume something is clean because it "looks clean"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout warn" style="margin-top:16px">
+        <strong>Remember:</strong> people are the number one source of contamination in a cleanroom —
+        and also the number one control. Your behaviour is a critical control point.
+      </div>
+    </section>
+
+    <!-- ============ 20. KNOWLEDGE CHECK ============ -->
+    <section class="slide" data-title="Knowledge Check">
+      <div class="slide-head">
+        <span class="kicker">Refresher Assessment</span>
+        <h2>Knowledge Check</h2>
+      </div>
+
+      <p class="lead">Select the best answer for each question. Feedback appears immediately.</p>
+
+      <div id="quizWrap">
+        <div class="quiz-q">
+          <p class="q-text">1. Which of the following is <strong>NOT</strong> one of the 5 factors that affect microbial growth?</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">Temperature</button>
+            <button class="opt" data-correct="0">pH</button>
+            <button class="opt" data-correct="1">Colour</button>
+            <button class="opt" data-correct="0">Moisture</button>
+          </div>
+          <p class="feedback" data-ok="Correct. The five factors are temperature, pH, moisture, food and oxygen." data-no="Not quite. The five factors are temperature, pH, moisture, food and oxygen — colour is not one of them."></p>
+        </div>
+
+        <div class="quiz-q">
+          <p class="q-text">2. <em>E. coli</em> normally lives in the colon and helps make vitamin K. When does it become harmful?</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">When it is exposed to oxygen</button>
+            <button class="opt" data-correct="1">When it enters a part of the body other than where it is intended</button>
+            <button class="opt" data-correct="0">When the body temperature drops</button>
+            <button class="opt" data-correct="0">It is always harmful</button>
+          </div>
+          <p class="feedback" data-ok="Correct. Location defines risk — the same organism can be beneficial in one site and pathogenic in another." data-no="Not quite. The key principle is location: a microorganism becomes harmful when it enters a part of the body other than where it is intended."></p>
+        </div>
+
+        <div class="quiz-q">
+          <p class="q-text">3. A microorganism that grows best in the <strong>absence</strong> of oxygen is called:</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">Aerobic</button>
+            <button class="opt" data-correct="1">Anaerobic</button>
+            <button class="opt" data-correct="0">Facultative anaerobic</button>
+            <button class="opt" data-correct="0">Pathogenic</button>
+          </div>
+          <p class="feedback" data-ok="Correct. Anaerobic microorganisms grow best in the absence of oxygen." data-no="Not quite. Anaerobic microorganisms grow best in the absence of oxygen; facultative anaerobes can grow in both conditions."></p>
+        </div>
+
+        <div class="quiz-q">
+          <p class="q-text">4. Which process makes an article, surface or medium free from <strong>all</strong> microorganisms, including spores?</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">Antisepsis</button>
+            <button class="opt" data-correct="0">Disinfection</button>
+            <button class="opt" data-correct="1">Sterilization</button>
+            <button class="opt" data-correct="0">Sanitisation</button>
+          </div>
+          <p class="feedback" data-ok="Correct. Sterilization kills all microorganisms, in both the vegetative and spore state." data-no="Not quite. Sterilization is the process that frees an article, surface or medium from ALL microorganisms, including spores."></p>
+        </div>
+
+        <div class="quiz-q">
+          <p class="q-text">5. Which of the following must <strong>NEVER</strong> be brought into a controlled manufacturing area?</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">Approved stainless steel containers</button>
+            <button class="opt" data-correct="1">Cardboard boxes and wooden pallets</button>
+            <button class="opt" data-correct="0">Cleanroom-approved wipes</button>
+            <button class="opt" data-correct="0">Validated transfer bags</button>
+          </div>
+          <p class="feedback" data-ok="Correct. Cardboard, wood products/pallets and packing materials are particle and microbial generators — they stay outside." data-no="Not quite. Cardboard, wood products/pallets and packing materials are prohibited in controlled areas."></p>
+        </div>
+
+        <div class="quiz-q">
+          <p class="q-text">6. Which media are used for viable environmental monitoring?</p>
+          <div class="opts">
+            <button class="opt" data-correct="0">MacConkey &amp; Blood Agar</button>
+            <button class="opt" data-correct="1">TSA &amp; SDA</button>
+            <button class="opt" data-correct="0">Nutrient Broth &amp; Peptone Water</button>
+            <button class="opt" data-correct="0">Saline &amp; Ringer's Solution</button>
+          </div>
+          <p class="feedback" data-ok="Correct. TSA (Tryptic Soy Agar) and SDA (Sabouraud Dextrose Agar) are the standard viable monitoring media." data-no="Not quite. TSA (Tryptic Soy Agar) for total aerobic count and SDA (Sabouraud Dextrose Agar) for yeasts and moulds."></p>
+        </div>
+      </div>
+
+      <button class="btn-ghost" id="quizReset">↺ Reset Quiz</button>
+    </section>
+
+    <!-- ============ 21. THANK YOU ============ -->
+    <section class="slide slide-cover" data-title="Thank You &amp; References">
+      <div class="cover">
+        <div class="cover-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="lgC" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#5FD0F5"/>
+                <stop offset="100%" stop-color="#26E0A8"/>
+              </linearGradient>
+            </defs>
+            <path d="M32 2 L56 16 V48 L32 62 L8 48 V16 Z" fill="url(#lgC)"/>
+            <path d="M32 15 c6.5 8.5 11 13 11 19.2 a11 11 0 0 1 -22 0 C21 28 25.5 23.5 32 15 z" fill="#062B4F" opacity=".9"/>
+          </svg>
+          <div class="bt">
+            <strong>DUOPHARMA</strong>
+            <span>BIOTECH BERHAD</span>
+          </div>
+        </div>
+
+        <h1>Thank You</h1>
+        <p class="cover-sub">
+          Questions and clarification are always welcome — especially when you are unsure.
+          In aseptic processing, asking is a control measure.
+        </p>
+
+        <div class="cover-meta">
+          <div><span>Prepared by</span><strong>Muhammad Firdaus Abdullah</strong></div>
+          <div><span>Department</span><strong>Quality Control — Sterile Manufacturing</strong></div>
+          <div><span>Module</span><strong>Basic Microbiology &amp; Contamination Control</strong></div>
+          <div><span>Reference</span><strong>Basic Microbial Training 2025</strong></div>
+        </div>
+
+        <p class="hint" style="margin-top:24px">
+          Reference material: Basic Microbial Training 2025 (internal training document) · NPRA &amp; foreign
+          regulatory guidelines · USP / EP / BP compendial microbiological methods · PIC/S GMP Guide.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= CONTROLS ================= -->
+  <footer class="controls">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous slide">‹ Prev</button>
+    <button class="nav-btn" id="nextBtn" aria-label="Next slide">Next ›</button>
+    <span class="slide-title-mini" id="miniTitle"></span>
+    <span class="counter" id="counter">1 / 21</span>
+  </footer>
+
+</div>
+
+<!-- ================= SLIDE INDEX ================= -->
+<div class="menu-overlay" id="menuOverlay">
+  <div class="menu-panel">
+    <button class="menu-close" id="menuClose" aria-label="Close menu">✕</button>
+    <h3>Slide Index</h3>
+    <div id="menuList"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const slides     = Array.from(document.querySelectorAll('.slide'));
+const bar        = document.querySelector('.progress > i');
+const counter    = document.getElementById('counter');
+const miniTitle  = document.getElementById('miniTitle');
+const prevBtn    = document.getElementById('prevBtn');
+const nextBtn    = document.getElementById('nextBtn');
+const menuBtn    = document.getElementById('menuBtn');
+const menuClose  = document.getElementById('menuClose');
+const menuOverlay= document.getElementById('menuOverlay');
+const menuList   = document.getElementById('menuList');
+let cur = 0;
+
+/* Build slide index */
+slides.forEach((s, i) => {
+  const b = document.createElement('button');
+  b.className = 'menu-item';
+  b.innerHTML = `<span>${String(i + 1).padStart(2, '0')}</span><span>${s.dataset.title || 'Slide ' + (i + 1)}</span>`;
+  b.addEventListener('click', () => { go(i); closeMenu(); });
+  menuList.appendChild(b);
+});
+const menuItems = Array.from(document.querySelectorAll('.menu-item'));
+
+function go(n) {
+  n = Math.max(0, Math.min(slides.length - 1, n));
+  if (n === cur && slides[cur].classList.contains('active')) return;
+  slides[cur].classList.remove('active');
+  cur = n;
+  slides[cur].classList.add('active');
+  slides[cur].scrollTop = 0;
+  update();
+}
+
+function update() {
+  bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+  counter.textContent = (cur + 1) + ' / ' + slides.length;
+  miniTitle.textContent = slides[cur].dataset.title || '';
+  prevBtn.disabled = cur === 0;
+  nextBtn.disabled = cur === slides.length - 1;
+  menuItems.forEach((el, i) => el.classList.toggle('active', i === cur));
+}
+
+prevBtn.addEventListener('click', () => go(cur - 1));
+nextBtn.addEventListener('click', () => go(cur + 1));
+
+/* Keyboard */
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+    e.preventDefault(); go(cur + 1);
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+    e.preventDefault(); go(cur - 1);
+  } else if (e.key === 'Home') { e.preventDefault(); go(0); }
+  else if (e.key === 'End')    { e.preventDefault(); go(slides.length - 1); }
+  else if (e.key === 'Escape') { closeMenu(); }
+});
+
+/* Menu */
+function openMenu()  { menuOverlay.classList.add('open'); }
+function closeMenu() { menuOverlay.classList.remove('open'); }
+menuBtn.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.addEventListener('click', e => { if (e.target === menuOverlay) closeMenu(); });
+
+/* Touch swipe */
+let tX = 0, tY = 0;
+document.addEventListener('touchstart', e => {
+  tX = e.changedTouches[0].clientX; tY = e.changedTouches[0].clientY;
+}, {passive: true});
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - tX;
+  const dy = e.changedTouches[0].clientY - tY;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
+    dx < 0 ? go(cur + 1) : go(cur - 1);
+  }
+}, {passive: true});
+
+/* ============================================================
+   INTERACTIVE: FACTOR TILES
+   ============================================================ */
+document.querySelectorAll('.factor').forEach(f => {
+  f.addEventListener('click', () => f.classList.toggle('open'));
+});
+
+/* ============================================================
+   INTERACTIVE: TABS
+   ============================================================ */
+document.querySelectorAll('.tabs').forEach(tabs => {
+  tabs.addEventListener('click', e => {
+    const btn = e.target.closest('.tab');
+    if (!btn) return;
+    tabs.querySelectorAll('.tab').forEach(b => b.classList.toggle('active', b === btn));
+    const wrap = tabs.parentElement;
+    wrap.querySelectorAll('.tab-panel').forEach(p =>
+      p.classList.toggle('active', p.dataset.panel === btn.dataset.tab));
+  });
+});
+
+/* ============================================================
+   INTERACTIVE: CONTAMINATION STAR MAP
+   ============================================================ */
+document.querySelectorAll('.src').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.src').forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('.src-detail').forEach(d =>
+      d.classList.toggle('active', d.dataset.detail === btn.dataset.src));
+  });
+});
+
+/* ============================================================
+   INTERACTIVE: FLIP CARDS
+   ============================================================ */
+document.querySelectorAll('.flip').forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+});
+
+/* ============================================================
+   INTERACTIVE: QUIZ
+   ============================================================ */
+document.querySelectorAll('.quiz-q').forEach(q => {
+  const opts = q.querySelectorAll('.opt');
+  const fb   = q.querySelector('.feedback');
+
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (q.dataset.done) return;
+      q.dataset.done = '1';
+
+      const isRight = opt.dataset.correct === '1';
+      opt.classList.add(isRight ? 'right' : 'wrong');
+
+      if (!isRight) {
+        const correct = q.querySelector('.opt[data-correct="1"]');
+        if (correct) correct.classList.add('right');
+      }
+
+      fb.textContent = (isRight ? '✔ ' : '✘ ') + (isRight ? fb.dataset.ok : fb.dataset.no);
+      fb.classList.add('show', isRight ? 'ok' : 'no');
+
+      opts.forEach(o => o.disabled = true);
+    });
+  });
+});
+
+document.getElementById('quizReset').addEventListener('click', () => {
+  document.querySelectorAll('.quiz-q').forEach(q => {
+    delete q.dataset.done;
+    const fb = q.querySelector('.feedback');
+    fb.classList.remove('show', 'ok', 'no');
+    fb.textContent = '';
+    q.querySelectorAll('.opt').forEach(o => {
+      o.disabled = false;
+      o.classList.remove('right', 'wrong');
+    });
+  });
+});
+
+/* ============================================================
+   INIT
+   ============================================================ */
+update();
+</script>
+</body>
+</html>
