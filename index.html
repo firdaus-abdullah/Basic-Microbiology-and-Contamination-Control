@@ -12,6 +12,7 @@
   --red:#E31E24;
   --red-d:#C4161C;
   --red-dd:#8B0C14;
+  --red-l:#EE2A32;
   --navy:#0E2A47;
   --ink:#141C28;
   --body:#2B3A4A;
@@ -23,7 +24,7 @@
   --blue:#0B5AA0;
   --blue-l:#0E86D4;
   --amber:#B7791F;
-  --card-shadow:0 6px 22px rgba(14,42,71,.09);
+  --card-shadow:0 8px 26px rgba(14,42,71,.09);
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,22 +38,22 @@ body{
 }
 
 /* ============================================================
-   VIEWPORT & A4 LANDSCAPE STAGE (1280 × 905 ≈ A4 297:210)
+   VIEWPORT & 16:9 STAGE (1920 × 1080)
    ============================================================ */
 #viewport{
   position:fixed;
-  top:0;left:0;right:0;bottom:78px;
+  top:0;left:0;right:0;bottom:86px;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   background:
-    radial-gradient(900px 560px at 50% 50%, #2A323C 0%, #171C22 70%),
+    radial-gradient(1400px 900px at 50% 50%, #2A323C 0%, #171C22 70%),
     #131820;
 }
 #stage{
-  width:1280px;
-  height:905px;
+  width:1920px;
+  height:1080px;
   position:relative;
   flex-shrink:0;
   transform-origin:center center;
@@ -69,10 +70,10 @@ body{
 .slide{
   position:absolute;inset:0;
   background:
-    radial-gradient(1100px 620px at 82% 12%, rgba(227,30,36,.035), transparent 55%),
-    radial-gradient(900px 700px at 8% 100%, rgba(11,90,160,.035), transparent 55%),
+    radial-gradient(1600px 900px at 82% 12%, rgba(227,30,36,.035), transparent 55%),
+    radial-gradient(1300px 1000px at 8% 100%, rgba(11,90,160,.035), transparent 55%),
     #FFFFFF;
-  padding:52px 72px 118px;
+  padding:68px 96px 148px;
   overflow:hidden;
   opacity:0;
   visibility:hidden;
@@ -86,9 +87,9 @@ body{
 .slide::before{
   content:"";
   position:absolute;inset:0;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='84' height='146' viewBox='0 0 84 146'><g fill='none' stroke='%23EDF0F4' stroke-width='1.4'><path d='M42 2 L82 25 L82 71 L42 94 L2 71 L2 25 Z'/><path d='M42 74 L82 97 L82 143 L42 166 L2 143 L2 97 Z'/></g></svg>");
-  background-size:84px 146px;
-  background-position:-10px -20px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='126' height='219' viewBox='0 0 126 219'><g fill='none' stroke='%23EDF0F4' stroke-width='1.6'><path d='M63 3 L123 38 L123 107 L63 141 L3 107 L3 38 Z'/><path d='M63 111 L123 146 L123 215 L63 249 L3 215 L3 146 Z'/></g></svg>");
+  background-size:126px 219px;
+  background-position:-15px -30px;
   opacity:.85;
   pointer-events:none;
   z-index:0;
@@ -99,17 +100,17 @@ body{
 .slide > *{position:relative;z-index:1}
 
 /* ============================================================
-   BRAND LOGO (top-right of every slide)
+   BRAND LOGO (top-right of every slide) — Duopharma Biotech
    ============================================================ */
 .brand-logo{
   position:absolute;
-  top:28px;right:38px;
-  width:118px;
+  top:36px;right:52px;
+  width:190px;
   z-index:5;
   pointer-events:none;
 }
 .brand-logo svg{display:block;width:100%;height:auto}
-.brand-logo.cover-size{width:150px;top:36px;right:48px}
+.brand-logo.cover-size{width:210px;top:52px;right:72px}
 
 /* ============================================================
    TAGLINE BANNER (bottom-left of every slide)
@@ -117,18 +118,18 @@ body{
 .tagline{
   position:absolute;
   left:0;bottom:0;
-  height:52px;
+  height:66px;
   background:linear-gradient(135deg,#EE1C25 0%,#C4161C 100%);
   color:#FFFFFF;
   display:flex;
   align-items:center;
-  padding:0 76px 0 48px;
+  padding:0 100px 0 68px;
   font-family:"Georgia","Times New Roman",serif;
   font-style:italic;
-  font-size:22px;
+  font-size:29px;
   font-weight:700;
-  letter-spacing:.4px;
-  clip-path:polygon(0 0, 100% 0, calc(100% - 44px) 100%, 0 100%);
+  letter-spacing:.5px;
+  clip-path:polygon(0 0, 100% 0, calc(100% - 56px) 100%, 0 100%);
   z-index:4;
   text-shadow:0 1px 2px rgba(0,0,0,.12);
 }
@@ -136,7 +137,7 @@ body{
   content:"";
   position:absolute;
   left:0;top:0;bottom:0;
-  width:8px;
+  width:10px;
   background:#8B0C14;
 }
 
@@ -145,50 +146,50 @@ body{
    ============================================================ */
 .kicker{
   display:inline-block;
-  font-size:20px;
+  font-size:26px;
   font-weight:800;
-  letter-spacing:3px;
+  letter-spacing:4px;
   text-transform:uppercase;
   color:var(--red);
-  margin-bottom:10px;
-  padding:4px 0;
+  margin-bottom:14px;
+  padding:5px 0;
 }
 .slide h2{
-  font-size:56px;
+  font-size:76px;
   line-height:1.08;
   font-weight:800;
   color:var(--navy);
-  letter-spacing:-.8px;
-  margin-bottom:22px;
-  padding-right:140px;
+  letter-spacing:-1.2px;
+  margin-bottom:30px;
+  padding-right:220px;
 }
 .slide h3{
-  font-size:32px;
+  font-size:44px;
   font-weight:800;
   color:var(--blue);
-  margin-bottom:12px;
-  letter-spacing:-.3px;
+  margin-bottom:16px;
+  letter-spacing:-.4px;
 }
 .slide h4{
-  font-size:26px;
+  font-size:34px;
   font-weight:800;
   color:var(--navy);
-  margin-bottom:8px;
+  margin-bottom:10px;
   letter-spacing:-.2px;
   line-height:1.2;
 }
 .slide p{
-  font-size:25px;
-  line-height:1.52;
+  font-size:32px;
+  line-height:1.5;
   color:var(--body);
-  margin-bottom:14px;
+  margin-bottom:18px;
   font-weight:500;
 }
 .slide .lead{
-  font-size:28px;
-  line-height:1.5;
+  font-size:36px;
+  line-height:1.48;
   color:var(--body);
-  margin-bottom:22px;
+  margin-bottom:26px;
   font-weight:500;
 }
 .slide strong{color:var(--navy);font-weight:800}
@@ -202,19 +203,23 @@ body{
 /* ============================================================
    CONTENT LAYOUT HELPERS
    ============================================================ */
-.body-area{flex:1;min-height:0;overflow:hidden;padding-right:100px}
+.body-area{flex:1;min-height:0;overflow:hidden;padding-right:150px}
 .body-area.no-pr{padding-right:0}
+.body-area.scroll{overflow-y:auto;padding-right:150px}
+.body-area.scroll::-webkit-scrollbar{width:12px}
+.body-area.scroll::-webkit-scrollbar-track{background:transparent}
+.body-area.scroll::-webkit-scrollbar-thumb{background:#C9DBEA;border-radius:12px;border:3px solid #fff}
 
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 
 /* Cards */
 .card{
   background:#FFFFFF;
-  border:1.5px solid var(--line);
-  border-radius:14px;
-  padding:20px 24px 22px;
+  border:2px solid var(--line);
+  border-radius:18px;
+  padding:26px 32px 28px;
   box-shadow:var(--card-shadow);
   position:relative;
   overflow:hidden;
@@ -222,7 +227,7 @@ body{
 .card::before{
   content:"";
   position:absolute;left:0;top:0;bottom:0;
-  width:6px;
+  width:8px;
   background:linear-gradient(180deg,var(--red) 0%,var(--red-dd) 100%);
 }
 .card.tinted{
@@ -232,50 +237,50 @@ body{
 .card.tinted::before{
   background:linear-gradient(180deg,var(--blue-l) 0%,var(--teal) 100%);
 }
-.card p{font-size:22px;line-height:1.5;margin-bottom:0;color:var(--body)}
+.card p{font-size:28px;line-height:1.5;margin-bottom:0;color:var(--body)}
 .card p:last-child{margin-bottom:0}
-.card ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.card ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .card ul li{
   position:relative;
-  padding-left:22px;
-  font-size:22px;
+  padding-left:28px;
+  font-size:28px;
   line-height:1.48;
   color:var(--body);
 }
 .card ul li::before{
   content:"";
-  position:absolute;left:6px;top:12px;
-  width:8px;height:8px;border-radius:50%;
+  position:absolute;left:8px;top:16px;
+  width:10px;height:10px;border-radius:50%;
   background:var(--red);
 }
 
 /* Bulleted list */
 ul.bullets{
-  list-style:none;padding:0;margin:0;display:grid;gap:12px;
+  list-style:none;padding:0;margin:0;display:grid;gap:16px;
 }
 ul.bullets li{
   position:relative;
-  padding-left:28px;
-  font-size:25px;
-  line-height:1.5;
+  padding-left:38px;
+  font-size:32px;
+  line-height:1.48;
   color:var(--body);
 }
 ul.bullets li::before{
   content:"";
-  position:absolute;left:6px;top:14px;
-  width:10px;height:10px;border-radius:50%;
+  position:absolute;left:8px;top:18px;
+  width:12px;height:12px;border-radius:50%;
   background:linear-gradient(135deg,var(--red),var(--red-dd));
 }
 
 /* Checklist */
-ul.checklist{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+ul.checklist{list-style:none;padding:0;margin:0;display:grid;gap:14px}
 ul.checklist li{
   position:relative;
-  padding:13px 20px 13px 58px;
-  border-radius:11px;
+  padding:16px 28px 16px 76px;
+  border-radius:14px;
   background:#F7FBFE;
-  border:1.5px solid var(--line);
-  font-size:24px;
+  border:2px solid var(--line);
+  font-size:30px;
   line-height:1.42;
   color:var(--body);
   font-weight:500;
@@ -283,28 +288,28 @@ ul.checklist li{
 ul.checklist li::before{
   content:"✓";
   position:absolute;
-  left:18px;top:50%;
+  left:22px;top:50%;
   transform:translateY(-50%);
-  width:28px;height:28px;
+  width:36px;height:36px;
   border-radius:50%;
   display:grid;place-items:center;
   background:linear-gradient(135deg,var(--red) 0%,var(--red-dd) 100%);
   color:#fff;
-  font-size:16px;
+  font-size:20px;
   font-weight:900;
 }
 
 /* Callout */
 .callout{
-  border-radius:12px;
-  padding:18px 24px;
+  border-radius:16px;
+  padding:24px 32px;
   background:linear-gradient(135deg,#F3F9FF 0%,#EEF9F4 100%);
-  border:1.5px solid #C9E2EC;
-  border-left:7px solid var(--teal);
-  font-size:23px;
+  border:2px solid #C9E2EC;
+  border-left:9px solid var(--teal);
+  font-size:29px;
   line-height:1.5;
   color:var(--body);
-  margin-top:18px;
+  margin-top:24px;
   font-weight:500;
 }
 .callout strong{color:var(--navy);font-weight:800}
@@ -319,18 +324,18 @@ ul.checklist li::before{
    COVER SLIDE
    ============================================================ */
 .slide.cover{
-  padding:80px 90px 118px;
+  padding:96px 120px 148px;
   justify-content:center;
 }
-.cover .brand-logo.cover-size{width:160px;top:44px;right:56px}
+.cover .brand-logo.cover-size{width:230px;top:64px;right:88px}
 .cover-title{
-  font-size:96px;
+  font-size:132px;
   line-height:1.02;
   font-weight:900;
   color:var(--navy);
-  letter-spacing:-2.2px;
-  margin-bottom:26px;
-  padding-right:180px;
+  letter-spacing:-3px;
+  margin-bottom:34px;
+  padding-right:250px;
 }
 .cover-title .accent{
   display:inline-block;
@@ -338,45 +343,45 @@ ul.checklist li::before{
   position:relative;
 }
 .cover-sub{
-  font-size:30px;
+  font-size:40px;
   line-height:1.42;
   color:var(--body);
-  max-width:900px;
-  margin-bottom:44px;
+  max-width:1260px;
+  margin-bottom:58px;
   font-weight:500;
 }
 .cover-meta{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  gap:18px;
-  max-width:920px;
+  gap:24px;
+  max-width:1280px;
 }
 .cover-meta > div{
   background:#FFFFFF;
-  border:1.5px solid var(--line);
-  border-radius:12px;
-  padding:16px 22px;
+  border:2px solid var(--line);
+  border-radius:16px;
+  padding:22px 30px;
   box-shadow:var(--card-shadow);
   position:relative;
   overflow:hidden;
 }
 .cover-meta > div::before{
   content:"";
-  position:absolute;left:0;top:0;bottom:0;width:5px;
+  position:absolute;left:0;top:0;bottom:0;width:6px;
   background:linear-gradient(180deg,var(--red),var(--red-dd));
 }
 .cover-meta span{
   display:block;
-  font-size:16px;
-  letter-spacing:2.4px;
+  font-size:21px;
+  letter-spacing:3px;
   text-transform:uppercase;
   color:var(--muted);
   font-weight:800;
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 .cover-meta strong{
   display:block;
-  font-size:24px;
+  font-size:31px;
   color:var(--navy);
   font-weight:800;
   line-height:1.3;
@@ -388,14 +393,14 @@ ul.checklist li::before{
 .factors{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
-  gap:14px;
-  margin-top:6px;
+  gap:18px;
+  margin-top:8px;
 }
 .factor{
   text-align:left;
   background:#FFFFFF;
-  border:2px solid var(--line);
-  border-radius:14px;
+  border:3px solid var(--line);
+  border-radius:18px;
   padding:0;
   cursor:pointer;
   transition:.22s ease;
@@ -405,36 +410,36 @@ ul.checklist li::before{
 }
 .factor:hover{
   border-color:var(--red);
-  transform:translateY(-3px);
-  box-shadow:0 12px 26px rgba(227,30,36,.14);
+  transform:translateY(-4px);
+  box-shadow:0 16px 34px rgba(227,30,36,.14);
 }
 .factor.open{
   border-color:var(--red);
-  box-shadow:0 12px 28px rgba(227,30,36,.20);
+  box-shadow:0 16px 36px rgba(227,30,36,.20);
   background:#FFF9F9;
 }
 .factor-head{
-  display:flex;align-items:center;gap:12px;
-  padding:18px 20px;
-  min-height:92px;
+  display:flex;align-items:center;gap:16px;
+  padding:24px 26px;
+  min-height:120px;
 }
-.factor-head .ico{font-size:36px;line-height:1}
+.factor-head .ico{font-size:48px;line-height:1}
 .factor-head h4{
   flex:1;
-  font-size:22px;
+  font-size:29px;
   font-weight:800;
   color:var(--navy);
   margin:0;
   line-height:1.18;
 }
 .factor-head .plus{
-  width:28px;height:28px;
+  width:36px;height:36px;
   border-radius:50%;
   display:grid;place-items:center;
   background:#F0F4F9;
   color:var(--navy);
   font-weight:900;
-  font-size:20px;
+  font-size:26px;
   transition:.25s;
   flex-shrink:0;
 }
@@ -446,29 +451,29 @@ ul.checklist li::before{
 .factor-body{
   max-height:0;overflow:hidden;
   transition:max-height .35s ease, padding .35s ease;
-  padding:0 20px;
+  padding:0 26px;
 }
 .factor.open .factor-body{
-  max-height:340px;
-  padding:0 20px 20px;
+  max-height:420px;
+  padding:0 26px 26px;
 }
-.factor-body p{font-size:19px;line-height:1.5;margin:0}
+.factor-body p{font-size:24px;line-height:1.5;margin:0}
 
 /* ============================================================
    INTERACTIVE — Tabs
    ============================================================ */
 .tabs{
-  display:flex;flex-wrap:wrap;gap:10px;
-  margin:4px 0 22px;
+  display:flex;flex-wrap:wrap;gap:14px;
+  margin:6px 0 28px;
 }
 .tab{
-  padding:12px 24px;
+  padding:16px 30px;
   border-radius:999px;
-  border:2px solid var(--line);
+  border:3px solid var(--line);
   background:#fff;
   color:var(--body);
   font-weight:800;
-  font-size:20px;
+  font-size:26px;
   cursor:pointer;
   transition:.2s;
   font-family:inherit;
@@ -479,72 +484,122 @@ ul.checklist li::before{
   background:linear-gradient(135deg,var(--red) 0%,var(--red-dd) 100%);
   color:#fff;
   border-color:transparent;
-  box-shadow:0 8px 20px rgba(227,30,36,.28);
+  box-shadow:0 10px 24px rgba(227,30,36,.28);
 }
 .tab-panel{display:none}
 .tab-panel.active{display:block;animation:fadeUp .3s ease}
-@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ============================================================
-   INTERACTIVE — Contamination star map
+   INTERACTIVE — Sterile Product Map (Page 8)
    ============================================================ */
-.star-map{
+.product-map{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:36px;
+  height:100%;
+}
+
+.map-canvas{
   position:relative;
-  height:340px;
-  margin:8px 0 20px;
-  border-radius:18px;
+  border-radius:22px;
   background:
-    radial-gradient(circle at 50% 50%, rgba(227,30,36,.06), transparent 62%),
+    radial-gradient(circle at 50% 45%, rgba(227,30,36,.07), transparent 62%),
     #FAFCFE;
-  border:1.5px dashed #D6E0EA;
+  border:2px dashed #D6E0EA;
+  overflow:hidden;
 }
-.star-core{
-  position:absolute;left:50%;top:50%;
+
+/* SVG connector lines */
+.map-connectors{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  pointer-events:none;
+  z-index:1;
+}
+.map-connectors line{
+  stroke:#C8D4E0;
+  stroke-width:2.5;
+  stroke-dasharray:8 6;
+}
+.map-connectors line.hot{
+  stroke:var(--red);
+  stroke-width:3;
+  stroke-dasharray:none;
+}
+
+/* Center product */
+.product-center{
+  position:absolute;
+  left:50%;top:48%;
   transform:translate(-50%,-50%);
-  width:200px;height:200px;
-  display:grid;place-items:center;
-  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
-  background:linear-gradient(135deg,var(--red) 0%,var(--red-dd) 100%);
-  box-shadow:0 14px 36px rgba(227,30,36,.30);
+  width:290px;
+  z-index:3;
+  filter:drop-shadow(0 18px 30px rgba(14,42,71,.18));
 }
-.star-core span{
-  font-size:20px;
-  font-weight:900;
-  letter-spacing:2.2px;
+.product-center svg{width:100%;height:auto;display:block}
+
+.product-label{
+  position:absolute;
+  left:50%;top:48%;
+  transform:translate(-50%, calc(-50% + 240px));
+  background:linear-gradient(135deg,var(--red),var(--red-dd));
   color:#fff;
-  padding-top:8px;
+  padding:10px 26px;
+  border-radius:999px;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:2.6px;
+  white-space:nowrap;
+  z-index:4;
+  box-shadow:0 10px 22px rgba(227,30,36,.28);
 }
+
+/* Source buttons */
 .src{
   position:absolute;
   left:var(--x);top:var(--y);
-  padding:14px 22px;
-  border-radius:12px;
-  border:2px solid var(--line);
+  padding:16px 24px;
+  border-radius:14px;
+  border:3px solid var(--line);
   background:#fff;
   color:var(--navy);
   font-weight:900;
-  font-size:19px;
-  letter-spacing:1px;
+  font-size:22px;
+  letter-spacing:1.1px;
   cursor:pointer;
-  box-shadow:0 6px 18px rgba(14,42,71,.09);
+  box-shadow:0 8px 22px rgba(14,42,71,.10);
   transition:.22s;
   white-space:nowrap;
   font-family:inherit;
+  z-index:4;
 }
 .src:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
   border-color:var(--red);
   color:var(--red-d);
+  box-shadow:0 14px 28px rgba(227,30,36,.18);
 }
 .src.active{
   background:linear-gradient(135deg,var(--red) 0%,var(--red-dd) 100%);
   color:#fff;
   border-color:transparent;
-  box-shadow:0 12px 26px rgba(227,30,36,.30);
+  box-shadow:0 14px 30px rgba(227,30,36,.32);
 }
+
+/* Detail panel (right side) */
 .src-detail{display:none}
-.src-detail.active{display:block;animation:fadeUp .28s ease}
-.src-detail .card{background:linear-gradient(135deg,#F7FBFF,#F3FAF7)}
+.src-detail.active{display:block;animation:fadeUp .28s ease;height:100%}
+.src-detail .card{
+  background:linear-gradient(135deg,#F7FBFF,#F3FAF7);
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  border-left-width:8px;
+}
+.src-detail .card h4{font-size:36px;margin-bottom:18px}
+.src-detail .card ul li{font-size:27px;line-height:1.5;padding-left:30px;margin-bottom:12px}
+.src-detail .card ul li::before{top:15px}
 
 /* ============================================================
    INTERACTIVE — Flip cards
@@ -552,12 +607,12 @@ ul.checklist li::before{
 .flip-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:22px;
-  margin-top:22px;
+  gap:30px;
+  margin-top:30px;
 }
 .flip{
-  perspective:1200px;
-  height:300px;
+  perspective:1400px;
+  height:400px;
   cursor:pointer;
 }
 .flip-inner{
@@ -569,46 +624,46 @@ ul.checklist li::before{
 .flip.flipped .flip-inner{transform:rotateY(180deg)}
 .flip-face{
   position:absolute;inset:0;
-  border-radius:16px;
-  padding:26px;
+  border-radius:20px;
+  padding:36px;
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
-  display:flex;flex-direction:column;justify-content:center;gap:12px;
+  display:flex;flex-direction:column;justify-content:center;gap:18px;
 }
 .flip-front{
   background:linear-gradient(140deg,var(--red) 0%,#A01018 100%);
   color:#fff;
   align-items:center;text-align:center;
-  box-shadow:0 16px 34px rgba(227,30,36,.28);
+  box-shadow:0 20px 44px rgba(227,30,36,.28);
 }
-.flip-front .fi{font-size:52px;line-height:1}
+.flip-front .fi{font-size:72px;line-height:1}
 .flip-front h4{
   color:#fff;
-  font-size:30px;
+  font-size:42px;
   letter-spacing:.4px;
   margin:0;
 }
 .flip-front small{
-  color:rgba(255,255,255,.75);
-  font-size:15px;
-  letter-spacing:1.8px;
+  color:rgba(255,255,255,.78);
+  font-size:20px;
+  letter-spacing:2.2px;
   text-transform:uppercase;
   font-weight:800;
 }
 .flip-back{
   background:#fff;
-  border:2px solid var(--line);
+  border:3px solid var(--line);
   transform:rotateY(180deg);
   color:var(--body);
-  font-size:22px;
+  font-size:28px;
   line-height:1.5;
   overflow:auto;
 }
 .flip-back strong{
   display:block;
-  font-size:24px;
+  font-size:32px;
   color:var(--red-d);
-  margin-bottom:10px;
+  margin-bottom:14px;
   letter-spacing:.3px;
   font-weight:900;
 }
@@ -618,32 +673,32 @@ ul.checklist li::before{
    ============================================================ */
 .quiz-q{
   background:#fff;
-  border:2px solid var(--line);
-  border-radius:14px;
-  padding:18px 24px 20px;
-  margin-bottom:14px;
+  border:3px solid var(--line);
+  border-radius:18px;
+  padding:24px 32px 28px;
+  margin-bottom:20px;
   box-shadow:var(--card-shadow);
 }
 .quiz-q .q-text{
-  font-size:23px;
+  font-size:30px;
   font-weight:800;
   color:var(--navy);
-  margin:0 0 14px;
+  margin:0 0 20px;
   line-height:1.38;
 }
 .opts{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
-  gap:10px;
+  gap:14px;
 }
 .opt{
   text-align:left;
-  padding:13px 20px;
-  border-radius:10px;
-  border:2px solid var(--line);
+  padding:18px 26px;
+  border-radius:12px;
+  border:3px solid var(--line);
   background:#F8FBFE;
   color:var(--body);
-  font-size:21px;
+  font-size:27px;
   font-weight:700;
   cursor:pointer;
   transition:.2s;
@@ -669,36 +724,36 @@ ul.checklist li::before{
 }
 .opt:disabled{cursor:default}
 .feedback{
-  margin:12px 0 0;
-  font-size:20px;
+  margin:16px 0 0;
+  font-size:26px;
   line-height:1.45;
   font-weight:700;
   display:none;
-  padding:12px 18px;
-  border-radius:10px;
+  padding:16px 24px;
+  border-radius:12px;
 }
 .feedback.show{display:block;animation:fadeUp .25s ease}
 .feedback.ok{
   background:#E9FAF2;
   color:#0B6E52;
-  border-left:6px solid var(--teal);
+  border-left:8px solid var(--teal);
 }
 .feedback.no{
   background:#FDF0F0;
   color:#B23A3A;
-  border-left:6px solid #E57373;
+  border-left:8px solid #E57373;
 }
 .btn-ghost{
-  margin-top:10px;
-  padding:12px 26px;
+  margin-top:14px;
+  padding:16px 34px;
   border-radius:999px;
   cursor:pointer;
   font-family:inherit;
   background:#fff;
-  border:2px solid var(--line);
+  border:3px solid var(--line);
   color:var(--navy);
   font-weight:900;
-  font-size:20px;
+  font-size:26px;
   letter-spacing:.4px;
   transition:.2s;
 }
@@ -710,12 +765,12 @@ ul.checklist li::before{
 .dd{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:22px;
+  gap:30px;
 }
 .dd-col{
-  border-radius:16px;
-  padding:24px 28px;
-  border:2px solid var(--line);
+  border-radius:20px;
+  padding:32px 38px;
+  border:3px solid var(--line);
   background:#fff;
   box-shadow:var(--card-shadow);
 }
@@ -728,21 +783,21 @@ ul.checklist li::before{
   border-color:#F5D5D5;
 }
 .dd-col h4{
-  display:flex;align-items:center;gap:12px;
-  margin-bottom:16px;
-  font-size:32px;
+  display:flex;align-items:center;gap:16px;
+  margin-bottom:22px;
+  font-size:42px;
   font-weight:900;
 }
 .dd-col.do h4{color:#0B6E52}
 .dd-col.dont h4{color:#B23A3A}
 .dd-col ul{
   list-style:none;padding:0;margin:0;
-  display:grid;gap:12px;
+  display:grid;gap:16px;
 }
 .dd-col li{
   position:relative;
-  padding-left:30px;
-  font-size:22px;
+  padding-left:40px;
+  font-size:28px;
   line-height:1.42;
   color:var(--body);
   font-weight:500;
@@ -752,27 +807,27 @@ ul.checklist li::before{
   position:absolute;left:0;top:0;
   color:var(--teal);
   font-weight:900;
-  font-size:24px;
+  font-size:32px;
 }
 .dd-col.dont li::before{
   content:"✕";
   position:absolute;left:0;top:0;
   color:#E57373;
   font-weight:900;
-  font-size:24px;
+  font-size:32px;
 }
 
 /* ============================================================
-   BOTTOM CONTROL BAR (outside stage — always readable)
+   BOTTOM CONTROL BAR
    ============================================================ */
 #controls{
   position:fixed;
   left:0;right:0;bottom:0;
-  height:78px;
+  height:86px;
   display:flex;
   align-items:center;
-  gap:14px;
-  padding:0 26px;
+  gap:16px;
+  padding:0 30px;
   background:linear-gradient(180deg,#0E131A 0%,#05080D 100%);
   border-top:1px solid rgba(255,255,255,.08);
   z-index:100;
@@ -780,16 +835,16 @@ ul.checklist li::before{
 .ctrl-btn{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  padding:12px 24px;
+  gap:12px;
+  padding:14px 28px;
   border-radius:999px;
   cursor:pointer;
   font-family:inherit;
   background:rgba(255,255,255,.09);
-  border:1.5px solid rgba(255,255,255,.20);
+  border:2px solid rgba(255,255,255,.20);
   color:#fff;
   font-weight:800;
-  font-size:19px;
+  font-size:22px;
   letter-spacing:.4px;
   transition:.2s;
   white-space:nowrap;
@@ -799,7 +854,7 @@ ul.checklist li::before{
   border-color:rgba(255,255,255,.42);
 }
 .ctrl-btn:disabled{opacity:.30;cursor:not-allowed}
-.ctrl-btn .ico{font-size:22px;line-height:1}
+.ctrl-btn .ico{font-size:26px;line-height:1}
 .ctrl-btn.primary{
   background:linear-gradient(135deg,var(--red) 0%,var(--red-dd) 100%);
   border-color:transparent;
@@ -811,52 +866,52 @@ ul.checklist li::before{
 }
 
 #counter{
-  font-size:20px;
+  font-size:24px;
   font-weight:900;
-  letter-spacing:2px;
+  letter-spacing:2.4px;
   color:rgba(255,255,255,.85);
   font-variant-numeric:tabular-nums;
-  padding:0 6px;
+  padding:0 8px;
 }
 #miniTitle{
-  font-size:17px;
+  font-size:20px;
   color:rgba(255,255,255,.45);
   font-weight:600;
   letter-spacing:.3px;
-  max-width:38vw;
+  max-width:34vw;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
-  margin-left:4px;
+  margin-left:6px;
 }
 .spacer{flex:1}
 .kbd-hint{
-  font-size:14px;
+  font-size:17px;
   color:rgba(255,255,255,.34);
   letter-spacing:.4px;
   font-weight:600;
 }
-@media(max-width:900px){.kbd-hint{display:none}}
+@media(max-width:1000px){.kbd-hint{display:none}}
 
-/* Tap hint overlay (first slide only) */
+/* Tap hint overlay */
 .tap-hint{
   position:absolute;
-  right:38px;bottom:96px;
+  right:52px;bottom:120px;
   background:rgba(14,42,71,.92);
   color:#fff;
-  padding:14px 22px;
-  border-radius:12px;
-  font-size:18px;
+  padding:18px 28px;
+  border-radius:14px;
+  font-size:24px;
   font-weight:700;
   letter-spacing:.3px;
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:14px;
   z-index:6;
-  box-shadow:0 12px 30px rgba(0,0,0,.30);
+  box-shadow:0 16px 40px rgba(0,0,0,.30);
   animation:pulse 2.2s ease-in-out infinite;
 }
-@keyframes pulse{0%,100%{opacity:.92;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+@keyframes pulse{0%,100%{opacity:.92;transform:translateY(0)}50%{opacity:1;transform:translateY(-4px)}}
 
 /* ============================================================
    MENU
@@ -874,37 +929,37 @@ ul.checklist li::before{
 }
 #menuOverlay.open{opacity:1;pointer-events:auto}
 .menu-panel{
-  width:min(520px, 94vw);
+  width:min(620px, 94vw);
   height:100%;
   background:linear-gradient(180deg,#0E2A47 0%,#071A2E 100%);
   border-left:1px solid rgba(255,255,255,.12);
-  padding:30px 26px;
+  padding:38px 32px;
   overflow-y:auto;
-  transform:translateX(28px);
+  transform:translateX(34px);
   transition:transform .3s cubic-bezier(.4,0,.2,1);
   position:relative;
 }
 #menuOverlay.open .menu-panel{transform:none}
 .menu-panel h3{
-  font-size:16px;
-  letter-spacing:3px;
+  font-size:20px;
+  letter-spacing:3.4px;
   text-transform:uppercase;
   color:rgba(255,255,255,.6);
-  margin:0 0 22px;
+  margin:0 0 26px;
   font-weight:900;
 }
 .menu-item{
-  display:flex;gap:16px;align-items:flex-start;
+  display:flex;gap:20px;align-items:flex-start;
   width:100%;text-align:left;
-  padding:14px 16px;
-  border-radius:10px;
-  margin-bottom:6px;
+  padding:16px 20px;
+  border-radius:12px;
+  margin-bottom:8px;
   cursor:pointer;
   background:transparent;
-  border:1.5px solid transparent;
+  border:2px solid transparent;
   color:rgba(255,255,255,.82);
   font-family:inherit;
-  font-size:19px;
+  font-size:23px;
   font-weight:600;
   line-height:1.35;
   transition:.18s;
@@ -912,10 +967,10 @@ ul.checklist li::before{
 .menu-item span:first-child{
   color:rgba(255,255,255,.40);
   font-weight:900;
-  font-size:16px;
+  font-size:19px;
   letter-spacing:1px;
   padding-top:2px;
-  min-width:30px;
+  min-width:36px;
 }
 .menu-item:hover{
   background:rgba(255,255,255,.09);
@@ -928,13 +983,13 @@ ul.checklist li::before{
 }
 .menu-close{
   position:absolute;
-  top:24px;right:26px;
-  width:44px;height:44px;
+  top:30px;right:32px;
+  width:52px;height:52px;
   border-radius:50%;
   background:rgba(255,255,255,.12);
   border:1px solid rgba(255,255,255,.20);
   color:#fff;
-  font-size:22px;
+  font-size:26px;
   cursor:pointer;
   display:grid;place-items:center;
   transition:.2s;
@@ -961,7 +1016,7 @@ ul.checklist li::before{
 <body>
 
 <!-- ============================================================
-     VIEWPORT & A4 LANDSCAPE STAGE
+     VIEWPORT & 16:9 STAGE
      ============================================================ -->
 <div id="viewport">
   <div id="stage">
@@ -969,21 +1024,31 @@ ul.checklist li::before{
     <!-- ============ SLIDE 1 — COVER ============ -->
     <section class="slide cover active" data-title="Title">
       <div class="brand-logo cover-size">
-        <!-- Duopharma brand mark (placeholder SVG — replace with official logo file) -->
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
+        <!-- Duopharma Biotech Berhad — official brand mark recreation -->
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg" aria-label="Duopharma Biotech Berhad">
           <defs>
-            <linearGradient id="dphRedA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#EE1C25"/>
-              <stop offset="100%" stop-color="#B0101A"/>
+            <linearGradient id="dphRedBase" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#EE2A32"/>
+              <stop offset="100%" stop-color="#C4161C"/>
             </linearGradient>
           </defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedA)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedA)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle"
-                font-family="Arial,Helvetica,sans-serif" font-weight="900"
-                font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+          <!-- Main red faceted hexagon -->
+          <g>
+            <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedBase)"/>
+            <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+            <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+            <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+            <!-- White negative-space channels forming the "D" motif -->
+            <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+            <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+            <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+            <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+            <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          </g>
+          <!-- Wordmark -->
+          <text x="110" y="242" text-anchor="middle"
+                font-family="Arial, Helvetica, sans-serif" font-weight="900"
+                font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1002,7 +1067,7 @@ ul.checklist li::before{
       </div>
 
       <div class="tap-hint" id="tapHint">
-        <span style="font-size:22px">👆</span>
+        <span style="font-size:28px">👆</span>
         <span>Tap anywhere to advance</span>
       </div>
 
@@ -1012,13 +1077,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 2 — OBJECTIVES ============ -->
     <section class="slide" data-title="Learning Objectives">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedB" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedB)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedB)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedB" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedB)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1050,13 +1120,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 3 — INTRODUCTION ============ -->
     <section class="slide" data-title="Introduction">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedC" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedC)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedC)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedC" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedC)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1075,14 +1150,14 @@ ul.checklist li::before{
               on surfaces, in water, on our skin, and inside our bodies — which is exactly why a sterile
               manufacturing environment must be actively controlled.
             </p>
-            <ul class="bullets" style="margin-top:16px">
+            <ul class="bullets" style="margin-top:22px">
               <li>Invisible to the naked eye — we rely on monitoring, not on sight</li>
               <li>Present everywhere — personnel are the closest and most constant source</li>
               <li>Some grow in conditions we would consider hostile</li>
             </ul>
           </div>
 
-          <div style="display:grid;gap:14px;align-content:start">
+          <div style="display:grid;gap:20px;align-content:start">
             <div class="card">
               <h4>Micro = Small</h4>
               <p>Measured in micrometres. A single contaminated fingerprint can carry millions of organisms.</p>
@@ -1110,13 +1185,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 4 — NATURE OF MICROORGANISMS ============ -->
     <section class="slide" data-title="Nature of Microorganisms">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedD" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedD)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedD)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedD" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedD)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1139,7 +1219,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout warn" style="margin-top:22px">
+        <div class="callout warn" style="margin-top:30px">
           <strong>The "wrong place" principle:</strong> when a microorganism enters a part of the body
           <em>other than where it is intended to be</em>, it can become harmful.
           <br><br>
@@ -1148,7 +1228,7 @@ ul.checklist li::before{
           organism causes infection.
         </div>
 
-        <div class="grid-2" style="margin-top:22px">
+        <div class="grid-2" style="margin-top:30px">
           <div class="card">
             <h4>The same principle applies to product</h4>
             <p>A microorganism that is harmless on intact skin can be harmful once it enters a sterile
@@ -1168,13 +1248,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 5 — 5 FACTORS ============ -->
     <section class="slide" data-title="5 Factors Affecting Growth">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedE" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedE)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedE)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedE" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedE)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1224,13 +1309,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 6 — 5 TYPES OF MICROORGANISMS ============ -->
     <section class="slide" data-title="5 Major Types of Microorganisms">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedF" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedF)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedF)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedF" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedF)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1347,13 +1437,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 7 — GROWTH CLASSIFICATION ============ -->
     <section class="slide" data-title="Microbial Growth Classification">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedG)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedG)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedG)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1378,13 +1473,13 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout" style="margin-top:24px">
+        <div class="callout" style="margin-top:30px">
           <strong>Practical implication:</strong> the same organism can behave differently in different parts
           of the process. A closed vessel, a stagnant water line and an open filling zone each favour a
           different population. This is why we monitor <strong>multiple locations</strong> — not just one.
         </div>
 
-        <div class="grid-2" style="margin-top:22px">
+        <div class="grid-2" style="margin-top:30px">
           <div class="card">
             <h4>Where we look for aerobes</h4>
             <p>Air, surfaces, gowning, settle plates, active air samples — the standard viable monitoring programme.</p>
@@ -1399,16 +1494,21 @@ ul.checklist li::before{
       <div class="tagline">Smarter Solutions. Healthier Life.</div>
     </section>
 
-    <!-- ============ SLIDE 8 — SOURCES OF CONTAMINATION ============ -->
+    <!-- ============ SLIDE 8 — SOURCES OF CONTAMINATION (with sterile product) ============ -->
     <section class="slide" data-title="Sources of Contamination">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedH" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedH)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedH)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedH" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedH)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1416,77 +1516,170 @@ ul.checklist li::before{
       <h2>Sources of Contamination</h2>
 
       <div class="body-area no-pr">
-        <p class="lead">Contamination is any <strong>foreign environmental, chemical or biological matter</strong>. Select a source to see how it reaches the product.</p>
+        <p class="lead" style="margin-bottom:16px">
+          Contamination is any <strong>foreign environmental, chemical or biological matter</strong>.
+          Select a source to see how it reaches the sterile product.
+        </p>
 
-        <div class="star-map">
-          <div class="star-core"><span>PRODUCT</span></div>
-          <button class="src" data-src="people"    style="--x:1%;  --y:4%;">PEOPLE</button>
-          <button class="src" data-src="materials" style="--x:69%; --y:2%;">RAW MATERIALS</button>
-          <button class="src" data-src="water"     style="--x:76%; --y:68%;">WATER</button>
-          <button class="src" data-src="air"       style="--x:31%; --y:84%;">AIR &amp; SURFACES</button>
-          <button class="src" data-src="equipment" style="--x:0%;  --y:68%;">EQUIPMENT</button>
-        </div>
+        <div class="product-map">
 
-        <div>
-          <div class="src-detail active" data-detail="people">
-            <div class="card">
-              <h4>i) People — the number one source</h4>
-              <ul>
-                <li>Shedding of cells, skin flakes and oils</li>
-                <li>Inappropriate gowning</li>
-                <li>Exposed skin, hair or clothing</li>
-                <li>Incorrectly wearing cleanroom attire</li>
-                <li>Bringing additional items into clean areas</li>
-                <li>Jewellery, shoes, clothing, purses, keys, cell phones</li>
-              </ul>
+          <!-- LEFT: Radial map with real sterile product at centre -->
+          <div class="map-canvas" id="mapCanvas">
+            <!-- SVG connector lines -->
+            <svg class="map-connectors" viewBox="0 0 960 760" preserveAspectRatio="none">
+              <line data-line="people"    x1="130" y1="80"  x2="480" y2="365"/>
+              <line data-line="materials" x1="830" y1="80"  x2="480" y2="365"/>
+              <line data-line="equipment" x1="90"  y1="370" x2="480" y2="365"/>
+              <line data-line="water"     x1="870" y1="370" x2="480" y2="365"/>
+              <line data-line="air"       x1="480" y1="680" x2="480" y2="365"/>
+            </svg>
+
+            <!-- Sterile product illustration (vial) -->
+            <div class="product-center">
+              <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" aria-label="Sterile injectable vial">
+                <defs>
+                  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#C9DEEA"/>
+                    <stop offset="0.18" stop-color="#E7F1F8"/>
+                    <stop offset="0.5" stop-color="#FAFDFF"/>
+                    <stop offset="0.82" stop-color="#DCEAF4"/>
+                    <stop offset="1" stop-color="#A8C6D8"/>
+                  </linearGradient>
+                  <linearGradient id="liquid" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#EBD79A"/>
+                    <stop offset="0.5" stop-color="#FBF3D2"/>
+                    <stop offset="1" stop-color="#DCC276"/>
+                  </linearGradient>
+                  <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#D4DCE3"/>
+                    <stop offset="0.45" stop-color="#9BA8B4"/>
+                    <stop offset="1" stop-color="#5F6C79"/>
+                  </linearGradient>
+                  <linearGradient id="labelG" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#F4F8FC"/>
+                    <stop offset="0.5" stop-color="#FFFFFF"/>
+                    <stop offset="1" stop-color="#EBF1F7"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Floor shadow -->
+                <ellipse cx="150" cy="388" rx="105" ry="14" fill="#0E2A47" opacity="0.16"/>
+
+                <!-- Glass body -->
+                <path d="M62 108 L62 342 Q62 378 100 378 L200 378 Q238 378 238 342 L238 108 Z"
+                      fill="url(#glass)" stroke="#9DB7C8" stroke-width="2"/>
+
+                <!-- Liquid -->
+                <path d="M66 168 L66 342 Q66 374 100 374 L200 374 Q234 374 234 342 L234 168 Z"
+                      fill="url(#liquid)"/>
+
+                <!-- Liquid surface highlight -->
+                <ellipse cx="150" cy="170" rx="82" ry="7" fill="#FFFCE8" opacity="0.75"/>
+
+                <!-- Neck -->
+                <rect x="88" y="58" width="124" height="52" fill="url(#glass)" stroke="#9DB7C8" stroke-width="2"/>
+
+                <!-- Crimp cap -->
+                <rect x="80" y="26" width="140" height="36" rx="5" fill="url(#cap)"/>
+                <rect x="84" y="30" width="132" height="7" fill="#FFFFFF" opacity="0.42"/>
+
+                <!-- Rubber stopper top -->
+                <rect x="112" y="18" width="76" height="22" rx="4" fill="#E31E24"/>
+                <rect x="116" y="22" width="68" height="5" fill="#FFFFFF" opacity="0.35"/>
+
+                <!-- Label -->
+                <rect x="78" y="212" width="144" height="118" rx="5" fill="url(#labelG)" stroke="#D4DEE8" stroke-width="1.5"/>
+                <rect x="90" y="228" width="120" height="9" fill="#0E2A47" opacity="0.85"/>
+                <rect x="90" y="244" width="82" height="5" fill="#5B6B7C" opacity="0.6"/>
+                <rect x="90" y="256" width="104" height="5" fill="#5B6B7C" opacity="0.6"/>
+                <rect x="90" y="268" width="66" height="5" fill="#5B6B7C" opacity="0.6"/>
+
+                <!-- Red band on label -->
+                <rect x="78" y="300" width="144" height="26" fill="#E31E24"/>
+                <text x="150" y="319" text-anchor="middle"
+                      font-family="Arial,Helvetica,sans-serif" font-weight="900"
+                      font-size="16" fill="#FFFFFF" letter-spacing="1.6">STERILE</text>
+
+                <!-- Glass highlight -->
+                <path d="M78 118 L78 342 Q78 370 100 370"
+                      stroke="#FFFFFF" stroke-width="5" opacity="0.6" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- Product label -->
+            <div class="product-label">STERILE PRODUCT</div>
+
+            <!-- Source buttons -->
+            <button class="src" data-src="people"    style="--x:3%;  --y:3%;">PEOPLE</button>
+            <button class="src" data-src="materials" style="--x:72%; --y:3%;">RAW MATERIALS</button>
+            <button class="src" data-src="equipment" style="--x:1%;  --y:44%;">EQUIPMENT</button>
+            <button class="src" data-src="water"     style="--x:75%; --y:44%;">WATER</button>
+            <button class="src" data-src="air"       style="--x:36%; --y:86%;">AIR &amp; SURFACES</button>
+          </div>
+
+          <!-- RIGHT: Detail panel -->
+          <div>
+            <div class="src-detail active" data-detail="people">
+              <div class="card">
+                <h4>i) People — the number one source</h4>
+                <ul>
+                  <li>Shedding of cells, skin flakes and oils</li>
+                  <li>Inappropriate gowning</li>
+                  <li>Exposed skin, hair or clothing</li>
+                  <li>Incorrectly wearing cleanroom attire</li>
+                  <li>Bringing additional items into clean areas</li>
+                  <li>Jewellery, shoes, clothing, purses, keys, cell phones</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="src-detail" data-detail="equipment">
+              <div class="card">
+                <h4>ii) Equipment</h4>
+                <ul>
+                  <li>Improper design — hard-to-clean surfaces, crevices, dead legs</li>
+                  <li>Improper and ineffective cleaning — leading to <strong>cross contamination</strong></li>
+                  <li>Inadequate maintenance</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="src-detail" data-detail="materials">
+              <div class="card">
+                <h4>iv) Materials / Containers / Closures</h4>
+                <ul>
+                  <li>Contaminated incoming materials</li>
+                  <li>Mishandled components</li>
+                  <li>Improper storage</li>
+                  <li>Cardboard, wood pallets and packing materials — <strong>never allowed</strong> in controlled areas</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="src-detail" data-detail="water">
+              <div class="card">
+                <h4>Water</h4>
+                <ul>
+                  <li>Purified Water and Water for Injection are prime microbial habitats if not controlled</li>
+                  <li>Biofilm formation in pipework, dead legs and stagnant loops</li>
+                  <li>Monitored by viable counts, bioburden, filtration, pour plates and chemistry (pH, conductivity, TOC)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="src-detail" data-detail="air">
+              <div class="card">
+                <h4>v) Environment — Air, Surfaces &amp; Facilities</h4>
+                <ul>
+                  <li>Air, surfaces, temperature, humidity and water</li>
+                  <li>Insufficient cleaning</li>
+                  <li>Inappropriate facility design and pest control issues</li>
+                  <li>Cardboard, wood pallets and other particle generators</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div class="src-detail" data-detail="equipment">
-            <div class="card">
-              <h4>ii) Equipment</h4>
-              <ul>
-                <li>Improper design — hard-to-clean surfaces, crevices, dead legs</li>
-                <li>Improper and ineffective cleaning — leading to <strong>cross contamination</strong></li>
-                <li>Inadequate maintenance</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="src-detail" data-detail="materials">
-            <div class="card">
-              <h4>iv) Materials / Containers / Closures</h4>
-              <ul>
-                <li>Contaminated incoming materials</li>
-                <li>Mishandled components</li>
-                <li>Improper storage</li>
-                <li>Cardboard, wood pallets and packing materials — <strong>never allowed</strong> in controlled areas</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="src-detail" data-detail="water">
-            <div class="card">
-              <h4>Water</h4>
-              <ul>
-                <li>Purified Water and Water for Injection are prime microbial habitats if not controlled</li>
-                <li>Biofilm formation in pipework, dead legs and stagnant loops</li>
-                <li>Monitored by viable counts, bioburden, filtration, pour plates and chemistry (pH, conductivity, TOC)</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="src-detail" data-detail="air">
-            <div class="card">
-              <h4>v) Environment — Air, Surfaces &amp; Facilities</h4>
-              <ul>
-                <li>Air, surfaces, temperature, humidity and water</li>
-                <li>Insufficient cleaning</li>
-                <li>Inappropriate facility design and pest control issues</li>
-                <li>Cardboard, wood pallets and other particle generators</li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -1496,13 +1689,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 9 — COMPONENTS ============ -->
     <section class="slide" data-title="Components of Contamination Control">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedI" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedI)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedI)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedI" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedI)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1510,7 +1708,7 @@ ul.checklist li::before{
       <h2>Components of a Contamination Control Programme</h2>
 
       <div class="body-area no-pr">
-        <p class="lead" style="margin-bottom:18px">
+        <p class="lead" style="margin-bottom:22px">
           <strong>Definition:</strong> proactive prevention of contamination — to ensure product is free of
           foreign matter, that appropriate control measures exist, that environments and product contact
           areas do not contribute to contamination, that gowning practices and materials/containers/closures
@@ -1527,7 +1725,7 @@ ul.checklist li::before{
           <div class="card tinted"><h4>vii) Training</h4><p>Operators, lab personnel, engineers and support groups.</p></div>
         </div>
 
-        <div class="callout" style="margin-top:20px">
+        <div class="callout" style="margin-top:28px">
           <strong>Remember:</strong> contamination control is a <em>system</em>. One weak component — usually
           training or behaviour — will compromise all the others.
         </div>
@@ -1539,13 +1737,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 10 — ENVIRONMENTAL MONITORING ============ -->
     <section class="slide" data-title="Environmental Monitoring — Viable">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedJ" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedJ)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedJ)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedJ" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedJ)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1561,21 +1764,21 @@ ul.checklist li::before{
               <li><strong>SDA</strong> — Sabouraud Dextrose Agar (yeasts and moulds)</li>
             </ul>
 
-            <h3 style="margin-top:22px">Air</h3>
+            <h3 style="margin-top:26px">Air</h3>
             <ul class="bullets">
               <li><strong>Active air sampling</strong> — a known volume of air is drawn over the medium</li>
               <li><strong>Air filtration</strong> — HEPA filtration as the primary barrier</li>
               <li><strong>Passive air sampling</strong> — settle plates, exposed for a defined time</li>
             </ul>
 
-            <h3 style="margin-top:22px">Surfaces</h3>
+            <h3 style="margin-top:26px">Surfaces</h3>
             <ul class="bullets">
               <li><strong>Contact plates</strong> — direct contact with flat surfaces</li>
               <li><strong>Swabs</strong> — for irregular, recessed or hard-to-reach areas</li>
             </ul>
           </div>
 
-          <div style="display:grid;gap:16px;align-content:start">
+          <div style="display:grid;gap:20px;align-content:start">
             <div class="card">
               <h4>Static vs Dynamic</h4>
               <p><strong>Static</strong> — monitoring with no activity in the area.<br>
@@ -1595,7 +1798,7 @@ ul.checklist li::before{
               <h4>Controlled Access</h4>
               <p>A documented procedure must detail <strong>what can and cannot</strong> be brought into
                  manufacturing areas.</p>
-              <p style="margin-top:10px"><strong>Never permitted:</strong> cardboard, wood products/pallets,
+              <p style="margin-top:12px"><strong>Never permitted:</strong> cardboard, wood products/pallets,
                  packing materials.</p>
             </div>
           </div>
@@ -1608,13 +1811,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 11 — WATER MONITORING ============ -->
     <section class="slide" data-title="Water &amp; Utilities Monitoring">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedK" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedK)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedK)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedK" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedK)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1641,14 +1849,14 @@ ul.checklist li::before{
               <li><strong>Conductivity</strong></li>
               <li><strong>TOC</strong> — Total Organic Carbon</li>
             </ul>
-            <p style="margin-top:12px">
+            <p style="margin-top:16px">
               Chemistry and microbiology go hand in hand: organic carbon feeds microorganisms, and
               conductivity excursions often precede microbial excursions.
             </p>
           </div>
         </div>
 
-        <div class="callout" style="margin-top:22px">
+        <div class="callout" style="margin-top:28px">
           <strong>Utility monitoring</strong> also covers <strong>gases, water and compressed air</strong> —
           any utility that contacts the product or a product-contact surface is a potential contamination route.
         </div>
@@ -1665,13 +1873,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 12 — INCOMING GOODS ============ -->
     <section class="slide" data-title="Evaluation of Incoming Goods">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedL)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedL)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedL" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedL)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1693,7 +1906,7 @@ ul.checklist li::before{
           <div class="card tinted"><h4>Storage &amp; Handling</h4><p>Controlled conditions, appropriate transfer and protection.</p></div>
         </div>
 
-        <div class="callout" style="margin-top:18px">
+        <div class="callout" style="margin-top:26px">
           <strong>Transfer discipline:</strong> materials must be transferred into the cleanroom using the
           approved route and method. Outer packaging stays outside — always.
         </div>
@@ -1705,13 +1918,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 13 — EQUIPMENT & FACILITY ============ -->
     <section class="slide" data-title="Equipment Qualification &amp; Facility Design">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedM" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedM)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedM)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedM" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedM)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1747,7 +1965,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout" style="margin-top:20px">
+        <div class="callout" style="margin-top:26px">
           <strong>Compliance assessment</strong> underpins all of this — evaluated against NPRA and foreign
           agency requirements, and against the specific nature of the process (oral solid dose vs liquid,
           toxic compounds, dusty operations, open vs closed operations, single-use vs dedicated, room
@@ -1761,13 +1979,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 14 — 3 COMMON METHODS ============ -->
     <section class="slide" data-title="3 Common Methods">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedN" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedN)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedN)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedN" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedN)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1792,7 +2015,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout warn" style="margin-top:28px">
+        <div class="callout warn" style="margin-top:36px">
           <strong>Critical distinction:</strong> aseptic technique and disinfection alone are
           <strong>not effective against spores</strong>. Only sterilization kills spores.
         </div>
@@ -1804,13 +2027,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 15 — ASEPTIC TECHNIQUE ============ -->
     <section class="slide" data-title="Aseptic Technique">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedO" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedO)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedO)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedO" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedO)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1837,7 +2065,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout" style="margin-top:28px">
+        <div class="callout" style="margin-top:34px">
           <strong>The one rule to remember:</strong> if a sterile object touches anything that is not sterile —
           or if you are unsure whether it is sterile — <strong>it is contaminated</strong>. Discard it and
           start again. There is no "probably still fine".
@@ -1850,13 +2078,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 16 — KEY TERMS ============ -->
     <section class="slide" data-title="Key Terms">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedP" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedP)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedP)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedP" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedP)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1913,7 +2146,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout" style="margin-top:26px">
+        <div class="callout" style="margin-top:32px">
           <strong>Know the difference:</strong> sterilization <em>kills everything</em>; disinfection
           <em>kills pathogens</em>; antisepsis <em>only inhibits growth</em>. Using the wrong one for the
           wrong application is a deviation waiting to happen.
@@ -1926,13 +2159,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 17 — DISINFECTION ============ -->
     <section class="slide" data-title="Disinfection — IPA &amp; Sodium Hypochlorite">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedQ" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedQ)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedQ)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedQ" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedQ)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -1948,7 +2186,7 @@ ul.checklist li::before{
               <li>Effectiveness depends on correct concentration, correct contact time and correct application</li>
             </ul>
 
-            <div class="card" style="margin-top:20px">
+            <div class="card" style="margin-top:24px">
               <h4>Understand the environment before you disinfect</h4>
               <ul>
                 <li>Cleanliness required</li>
@@ -1961,7 +2199,7 @@ ul.checklist li::before{
             </div>
           </div>
 
-          <div style="display:grid;gap:16px;align-content:start">
+          <div style="display:grid;gap:20px;align-content:start">
             <div class="card tinted">
               <h4>Isopropyl Alcohol (IPA)</h4>
               <p>Fast-acting, evaporates cleanly, ideal for glove sanitisation, small surfaces and transfer
@@ -1988,13 +2226,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 18 — STERILIZATION ============ -->
     <section class="slide" data-title="Sterilization Methods">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedR" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedR)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedR)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedR" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedR)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -2035,7 +2278,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout warn" style="margin-top:24px">
+        <div class="callout warn" style="margin-top:30px">
           <strong>Cycle validation matters:</strong> sterilization is only effective when the load, the cycle
           parameters and the monitoring (biological indicators, chemical indicators, physical parameters)
           are all correct and documented.
@@ -2048,13 +2291,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 19 — DO / DON'T ============ -->
     <section class="slide" data-title="Your Role — Do's &amp; Don'ts">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedS)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedS)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedS" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedS)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -2089,7 +2337,7 @@ ul.checklist li::before{
           </div>
         </div>
 
-        <div class="callout warn" style="margin-top:20px">
+        <div class="callout warn" style="margin-top:28px">
           <strong>Remember:</strong> people are the number one source of contamination in a cleanroom —
           and also the number one control. Your behaviour is a critical control point.
         </div>
@@ -2101,21 +2349,26 @@ ul.checklist li::before{
     <!-- ============ SLIDE 20 — KNOWLEDGE CHECK ============ -->
     <section class="slide" data-title="Knowledge Check">
       <div class="brand-logo">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedT" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedT)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedT)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedT" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedT)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
       <span class="kicker">Refresher Assessment</span>
       <h2>Knowledge Check</h2>
 
-      <div class="body-area no-pr" style="overflow-y:auto">
-        <p class="lead" style="margin-bottom:16px">Select the best answer for each question. Feedback appears immediately.</p>
+      <div class="body-area scroll">
+        <p class="lead" style="margin-bottom:20px">Select the best answer for each question. Feedback appears immediately.</p>
 
         <div class="quiz-q">
           <p class="q-text">1. Which of the following is <strong>NOT</strong> one of the 5 factors that affect microbial growth?</p>
@@ -2192,13 +2445,18 @@ ul.checklist li::before{
     <!-- ============ SLIDE 21 — THANK YOU ============ -->
     <section class="slide cover" data-title="Thank You">
       <div class="brand-logo cover-size">
-        <svg viewBox="0 0 130 145" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="dphRedU" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#EE1C25"/><stop offset="100%" stop-color="#B0101A"/></linearGradient></defs>
-          <polygon points="65,6 118,36 118,96 65,126 12,96 12,36" fill="url(#dphRedU)"/>
-          <path d="M40 30 L65 30 L90 60 L65 90 L40 90 Z" fill="#FFFFFF"/>
-          <path d="M52 42 L64 42 L78 60 L64 78 L52 78 Z" fill="url(#dphRedU)"/>
-          <rect x="30" y="55" width="10" height="10" fill="#FFFFFF"/>
-          <text x="65" y="142" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="18" fill="#111" letter-spacing="0.5">DUOPHARMA</text>
+        <svg viewBox="0 0 220 260" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="dphRedU" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EE2A32"/><stop offset="100%" stop-color="#C4161C"/></linearGradient></defs>
+          <polygon points="110,10 200,60 200,148 110,198 20,148 20,60" fill="url(#dphRedU)"/>
+          <polygon points="110,10 200,60 200,88 110,38" fill="#9E0C14"/>
+          <polygon points="200,120 200,148 110,198 110,170" fill="#9E0C14"/>
+          <polygon points="200,88 200,120 110,170 110,138" fill="#C4161C"/>
+          <polygon points="60,42 96,42 60,110 24,110" fill="#FFFFFF"/>
+          <polygon points="126,42 154,42 154,68 100,68" fill="#FFFFFF"/>
+          <polygon points="60,124 96,124 60,166 24,166" fill="#FFFFFF"/>
+          <polygon points="126,150 154,150 154,176 100,176" fill="#FFFFFF"/>
+          <polygon points="168,88 196,88 168,140 140,140" fill="#FFFFFF"/>
+          <text x="110" y="242" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="30" fill="#0E2A47" letter-spacing="0.8">DUOPHARMA</text>
         </svg>
       </div>
 
@@ -2249,12 +2507,12 @@ ul.checklist li::before{
 
 <script>
 /* ============================================================
-   SCALING — fit A4 landscape stage to viewport
+   SCALING — fit 16:9 stage to viewport (preserve aspect ratio)
    ============================================================ */
 const stage = document.getElementById('stage');
 const viewport = document.getElementById('viewport');
-const DESIGN_W = 1280;
-const DESIGN_H = 905;
+const DESIGN_W = 1920;
+const DESIGN_H = 1080;
 
 function fitStage() {
   const vw = viewport.clientWidth;
@@ -2354,17 +2612,16 @@ function isInteractive(target) {
   return !!target.closest(
     'button, .flip, .factor, .tab, .opt, .src, ' +
     '#controls, #menuOverlay, .menu-panel, .menu-close, .menu-item, ' +
+    '.product-map, .map-canvas, .product-center, .brand-logo, ' +
     '[data-no-advance]'
   );
 }
 
-/* Click / tap on the stage area */
 stage.addEventListener('click', e => {
   if (isInteractive(e.target)) return;
   go(cur + 1);
 });
 
-/* Click anywhere on the dark background also advances */
 viewport.addEventListener('click', e => {
   if (e.target === viewport) go(cur + 1);
 });
@@ -2385,10 +2642,10 @@ stage.addEventListener('touchend', e => {
   const dt = Date.now() - touchT;
 
   /* Horizontal swipe → navigate */
-  if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+  if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy) * 1.4) {
     if (isInteractive(e.target)) return;
-    if (dx < 0) go(cur + 1);   /* swipe left → next */
-    else         go(cur - 1);   /* swipe right → prev */
+    if (dx < 0) go(cur + 1);
+    else         go(cur - 1);
   }
 }, { passive: true });
 
@@ -2415,16 +2672,28 @@ document.querySelectorAll('.tabs').forEach(tabs => {
 });
 
 /* ============================================================
-   INTERACTIVE: CONTAMINATION STAR MAP
+   INTERACTIVE: STERILE PRODUCT MAP (Page 8)
    ============================================================ */
+function setActiveSource(srcKey) {
+  /* Toggle source buttons */
+  document.querySelectorAll('.src').forEach(b => b.classList.toggle('active', b.dataset.src === srcKey));
+  /* Toggle detail panels */
+  document.querySelectorAll('.src-detail').forEach(d =>
+    d.classList.toggle('active', d.dataset.detail === srcKey));
+  /* Toggle connector line highlight */
+  document.querySelectorAll('.map-connectors line').forEach(l =>
+    l.classList.toggle('hot', l.dataset.line === srcKey));
+}
+
 document.querySelectorAll('.src').forEach(btn => {
   btn.addEventListener('click', e => {
     e.stopPropagation();
-    document.querySelectorAll('.src').forEach(b => b.classList.toggle('active', b === btn));
-    document.querySelectorAll('.src-detail').forEach(d =>
-      d.classList.toggle('active', d.dataset.detail === btn.dataset.src));
+    setActiveSource(btn.dataset.src);
   });
 });
+
+/* Initialise default highlight */
+setActiveSource('people');
 
 /* ============================================================
    INTERACTIVE: FLIP CARDS
@@ -2482,7 +2751,6 @@ document.getElementById('quizReset').addEventListener('click', e => {
 fitStage();
 update();
 
-/* Ensure scaling recalcs after fonts/layout settle */
 window.addEventListener('load', () => setTimeout(fitStage, 80));
 </script>
 </body>
