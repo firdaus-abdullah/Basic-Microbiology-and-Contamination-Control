@@ -8,8 +8,8 @@
   :root{
     --ink:#0f172a;
     --muted:#475569;
-    --brand:#1e3a8a;        /* navy blue */
-    --brand2:#059669;       /* emerald green */
+    --brand:#1e3a8a;
+    --brand2:#059669;
     --line:#e2e8f0;
     --soft:#eff6ff;
     --soft2:#ecfdf5;
@@ -25,7 +25,6 @@
     text-rendering:optimizeLegibility;
   }
 
-  /* ---------- scaling stage ---------- */
   #stage{position:fixed;inset:0;background:#fff}
   #deck{
     position:absolute;
@@ -36,7 +35,6 @@
     will-change:transform;
   }
 
-  /* ---------- slides ---------- */
   .slide{
     position:absolute;inset:0;
     padding:62px 84px 76px;
@@ -47,7 +45,6 @@
   }
   .slide.active{opacity:1;visibility:visible}
 
-  /* ---------- LOGO (top-right, every content slide) ---------- */
   .slide-logo{
     position:absolute;
     top:24px;right:48px;
@@ -78,14 +75,12 @@
   .lede{font-size:36px;color:var(--muted);line-height:1.4;margin-top:22px}
   .body{flex:1;margin-top:36px;display:flex;flex-direction:column;justify-content:flex-start;position:relative;z-index:1}
 
-  /* ---------- decorative watermark ---------- */
   .watermark{
     position:absolute;right:40px;bottom:40px;
     width:300px;height:300px;
     opacity:.14;pointer-events:none;
   }
 
-  /* ---------- cover ---------- */
   .cover{justify-content:center;padding:70px 84px}
   .cover-grid{
     display:grid;grid-template-columns:1.3fr .7fr;gap:34px;align-items:center;width:100%;
@@ -98,7 +93,6 @@
   .cover .author span{font-weight:600;color:var(--muted)}
   .cover-art{width:100%;height:auto;max-height:540px;display:block}
 
-  /* ---------- lists ---------- */
   ul.big,ol.num,ul.check{list-style:none;display:grid;gap:20px}
   ul.big li{
     position:relative;padding-left:46px;font-size:34px;line-height:1.38;
@@ -125,7 +119,6 @@
     border-radius:9px;margin-top:6px;
   }
 
-  /* ---------- callout ---------- */
   .callout{
     background:var(--soft);
     border-left:12px solid var(--brand);
@@ -140,7 +133,6 @@
   }
   .callout.green .lbl{color:var(--brand2)}
 
-  /* ---------- grid cards ---------- */
   .grid{display:grid;gap:26px}
   .g2{grid-template-columns:1fr 1fr}
   .g3{grid-template-columns:repeat(3,1fr)}
@@ -165,7 +157,6 @@
     stroke-linecap:round;stroke-linejoin:round;color:var(--brand);
   }
 
-  /* ---------- table ---------- */
   table{width:100%;border-collapse:collapse;font-size:31px}
   th{
     text-align:left;font-size:22px;font-weight:800;letter-spacing:.13em;
@@ -176,7 +167,6 @@
   td:first-child{font-weight:700}
   tr:last-child td{border-bottom:none}
 
-  /* ---------- dense slides ---------- */
   .dense .body{margin-top:26px}
   .dense table{font-size:25px}
   .dense th{font-size:19px;padding:0 18px 11px}
@@ -191,7 +181,6 @@
   .dense .card ul li{font-size:22px;padding-left:24px}
   .dense .card ul li::before{top:10px;width:10px;height:10px}
 
-  /* ---------- chain ---------- */
   .chain{display:flex;align-items:stretch;gap:0;margin-top:10px}
   .chain .node{
     flex:1;display:grid;place-items:center;text-align:center;
@@ -204,10 +193,8 @@
     font-size:38px;color:#94a3b8;font-weight:700;
   }
 
-  /* ---------- first air diagram ---------- */
   .airflow{width:100%;max-height:190px;display:block;margin-top:14px}
 
-  /* ---------- big number / statement ---------- */
   .huge{font-size:118px;font-weight:800;letter-spacing:-.03em;color:var(--brand);line-height:1}
   .statement{font-size:52px;font-weight:800;line-height:1.16;letter-spacing:-.015em}
   .tri{width:640px;max-width:100%;height:auto;display:block;margin:34px auto 0}
@@ -217,7 +204,6 @@
     font-size:26px;color:#94a3b8;font-weight:600;
   }
 
-  /* ---------- summary + QR ---------- */
   .summary-grid{display:grid;grid-template-columns:1fr 380px;gap:46px;align-items:start}
   .num.compact li{font-size:30px;gap:20px}
   .num.compact .n{flex:0 0 46px;height:46px;font-size:21px}
@@ -229,7 +215,6 @@
       background:#fff;border-radius:12px;}
   .qr-cap{margin-top:16px;font-size:23px;font-weight:700;color:var(--brand);line-height:1.3}
 
-  /* ---------- closing ---------- */
   .closing-ico{width:120px;height:120px;display:block;margin:0 auto 30px}
   .close-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;text-align:center}
   .close-wrap .rule{margin-left:auto;margin-right:auto}
@@ -289,21 +274,24 @@
     display:grid;place-items:center;cursor:pointer;
     opacity:.6;transition:opacity .2s,border-color .2s,transform .12s;
     box-shadow:0 4px 14px rgba(15,23,42,.06);
+    touch-action:manipulation;
   }
   .navbtn:hover{opacity:1;border-color:var(--brand);transform:translateY(-2px)}
   .navbtn:active{transform:translateY(0)}
   .navbtn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.6;
-              stroke-linecap:round;stroke-linejoin:round}
+              stroke-linecap:round;stroke-linejoin:round;
+              pointer-events:none}
+  .navbtn svg *{pointer-events:none}
   .navbtn.wide{width:66px}
 
   #hint{
     position:fixed;left:50%;bottom:90px;transform:translateX(-50%);z-index:60;
     font-size:19px;font-weight:700;color:#94a3b8;letter-spacing:.06em;
     transition:opacity .6s ease;user-select:none;white-space:nowrap;
+    pointer-events:none;
   }
   #hint.gone{opacity:0}
 
-  /* ---------- overview ---------- */
   #overview{
     position:absolute;inset:0;z-index:300;
     background:rgba(255,255,255,.98);
@@ -358,7 +346,6 @@
         <div>
           <svg class="cover-art" viewBox="0 0 560 560" aria-hidden="true">
             <circle cx="290" cy="285" r="235" fill="#eff6ff"/>
-            <!-- petri dish -->
             <g transform="translate(200 300)">
               <circle r="168" fill="#ffffff" stroke="#1e3a8a" stroke-width="10"/>
               <circle r="140" fill="none" stroke="#dbeafe" stroke-width="6"/>
@@ -370,7 +357,6 @@
               <circle cx="-90" cy="18" r="11" fill="#0f172a" opacity=".45"/>
               <circle cx="98" cy="96" r="9" fill="#0f172a" opacity=".4"/>
             </g>
-            <!-- vial -->
             <g transform="translate(410 130)">
               <rect x="8" y="62" width="74" height="206" rx="20" fill="#ffffff"
                     stroke="#1e3a8a" stroke-width="9"/>
@@ -660,11 +646,11 @@
       </div>
     </section>
 
-    <!-- ══════════ 11 · VIDEO · ASEPTIC GOWNING ══════════ -->
+    <!-- ══════════ 11 · VIDEO · CORRECT GOWNING TECHNIQUE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 4 · The first and last barrier</div>
-      <h1 class="title">Aseptic gowning — watch and compare</h1>
+      <h1 class="title">Correct gowning technique — watch and compare</h1>
       <div class="rule"></div>
       <div class="body" style="justify-content:center">
         <div class="video-wrap">
@@ -676,7 +662,7 @@
               </video>
             </div>
             <div class="video-cap">
-              Watch the sequence: hand hygiene → hood → mask → coverall → boots → gloves → disinfection.
+              Sequence: hand hygiene → hood → mask → coverall → boots → gloves → disinfection.
             </div>
           </div>
         </div>
@@ -991,7 +977,6 @@
           </ol>
 
           <div class="qr-card">
-            <!-- ▼ Replace the data= value with your own assessment link ▼ -->
             <img class="qr"
                  src="https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=8&data=https%3A%2F%2Fforms.gle%2FAPS-Refresher-Assessment"
                  alt="QR code linking to the assessment">
@@ -1142,7 +1127,6 @@
       t.appendChild(num);
 
       t.addEventListener('click', function (e) {
-        e.preventDefault();
         e.stopPropagation();
         show(i);
         closeOverview();
@@ -1170,12 +1154,10 @@
     ov.classList.contains('open') ? closeOverview() : openOverview();
   }
 
-  btnPrev.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); prev(); });
-  btnNext.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); next(); });
-  btnOv.addEventListener('click',   function (e) { e.preventDefault(); e.stopPropagation(); toggleOverview(); });
-  [btnPrev, btnNext, btnOv].forEach(function (b) {
-    b.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
-  });
+  /* ---------- nav buttons: direct click handlers ---------- */
+  btnPrev.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+  btnNext.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+  btnOv.addEventListener('click',   function (e) { e.stopPropagation(); toggleOverview(); });
 
   /* ---------- pointer: tap to advance, swipe to navigate ---------- */
   var startX = 0, startY = 0, startT = 0, moved = false, uiTouch = false;
@@ -1261,12 +1243,7 @@
       if (exit) exit.call(document);
     }
   }
-  fsBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleFullscreen();
-  });
-  fsBtn.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+  fsBtn.addEventListener('click', function (e) { e.stopPropagation(); toggleFullscreen(); });
 
   /* ---------- auto-hide hint ---------- */
   setTimeout(dismissHint, 8000);
