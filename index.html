@@ -176,7 +176,7 @@
   td:first-child{font-weight:700}
   tr:last-child td{border-bottom:none}
 
-  /* ---------- dense slides (5 & 11) ---------- */
+  /* ---------- dense slides ---------- */
   .dense .body{margin-top:26px}
   .dense table{font-size:25px}
   .dense th{font-size:19px;padding:0 18px 11px}
@@ -237,6 +237,25 @@
   .close-meta span{
     font-size:24px;font-weight:600;color:var(--brand);
     background:var(--soft);border-radius:999px;padding:12px 26px;
+  }
+
+  /* ---------- video slide ---------- */
+  .video-wrap{
+    flex:1;display:flex;align-items:center;justify-content:center;width:100%;
+  }
+  .video-frame{
+    width:100%;max-width:1180px;margin:0 auto;
+    border:3px solid var(--line);border-radius:20px;
+    overflow:hidden;background:#0f172a;
+    box-shadow:0 20px 44px rgba(15,23,42,.20);
+  }
+  .video-frame video{
+    display:block;width:100%;height:auto;max-height:470px;
+    background:#000;object-fit:contain;
+  }
+  .video-cap{
+    margin-top:16px;font-size:26px;font-weight:600;
+    color:var(--muted);text-align:center;line-height:1.35;
   }
 
   /* ---------- UI chrome ---------- */
@@ -513,7 +532,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 7 · FIVE SOURCES (with icons) ══════════ -->
+    <!-- ══════════ 7 · FIVE SOURCES ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 3 · Contamination control strategy</div>
@@ -574,7 +593,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 9 · FIVE PRINCIPLES + FIRST-AIR DIAGRAM ══════════ -->
+    <!-- ══════════ 9 · FIVE PRINCIPLES ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 4 · Aseptic technique</div>
@@ -641,7 +660,30 @@
       </div>
     </section>
 
-    <!-- ══════════ 11 · APS IS / IS NOT (dense) ══════════ -->
+    <!-- ══════════ 11 · VIDEO · ASEPTIC GOWNING ══════════ -->
+    <section class="slide">
+      <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
+      <div class="kicker">Module 4 · The first and last barrier</div>
+      <h1 class="title">Aseptic gowning — watch and compare</h1>
+      <div class="rule"></div>
+      <div class="body" style="justify-content:center">
+        <div class="video-wrap">
+          <div style="width:100%">
+            <div class="video-frame no-advance">
+              <video controls playsinline preload="metadata"
+                     src="Aseptic%20Gowning%20for%20the%20Cleanroom.mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="video-cap">
+              Watch the sequence: hand hygiene → hood → mask → coverall → boots → gloves → disinfection.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════ 12 · APS IS / IS NOT (dense) ══════════ -->
     <section class="slide dense">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 5 · Aseptic Process Simulation</div>
@@ -674,7 +716,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 12 · REGULATORY ══════════ -->
+    <!-- ══════════ 13 · REGULATORY ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 5 · Regulatory framework</div>
@@ -696,7 +738,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 13 · WORST CASE ══════════ -->
+    <!-- ══════════ 14 · WORST CASE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 5 · Worst-case design</div>
@@ -718,14 +760,14 @@
       </div>
     </section>
 
-    <!-- ══════════ 14 · INTERVENTIONS ══════════ -->
-    <section class="slide">
+    <!-- ══════════ 15 · INTERVENTIONS (dense) ══════════ -->
+    <section class="slide dense">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 6 · Interventions</div>
       <h1 class="title">Three types — and all of them must be simulated</h1>
       <div class="rule"></div>
       <div class="body">
-        <div class="grid g3" style="gap:24px">
+        <div class="grid g3" style="gap:22px">
           <div class="card">
             <h3>Inherent</h3>
             <p style="margin-bottom:12px">Planned activities in every run.</p>
@@ -734,7 +776,7 @@
               <li>Lyophiliser loading / unloading</li>
               <li>Routine sample collection</li>
             </ul>
-            <p style="margin-top:14px;font-size:24px">Simulated at the <b>same frequency and duration</b> as production.</p>
+            <p style="margin-top:12px">Simulated at the <b>same frequency and duration</b> as production.</p>
           </div>
           <div class="card">
             <h3>Corrective</h3>
@@ -745,22 +787,22 @@
               <li>Toppled vials</li>
               <li>Equipment adjustment</li>
             </ul>
-            <p style="margin-top:14px;font-size:24px">Unplanned in production — but <b>deliberately included</b> in the APS.</p>
+            <p style="margin-top:12px">Unplanned in production — but <b>deliberately included</b> in the APS.</p>
           </div>
           <div class="card" style="border-color:var(--brand)">
             <h3>Critical</h3>
             <p>Occurs <b>within the aseptic processing area</b> where product and critical surfaces are exposed to the environment.</p>
-            <p style="margin-top:14px;color:var(--brand);font-weight:700">Highest contamination risk — maximum first-air protection required.</p>
+            <p style="margin-top:12px;color:var(--brand);font-weight:700">Highest contamination risk — maximum first-air protection required.</p>
           </div>
         </div>
-        <div class="callout green" style="margin-top:30px;font-size:30px">
+        <div class="callout" style="margin-top:22px">
           <span class="lbl">Regulatory expectation</span>
           100 % of all non-routine interventions must be simulated — for type, frequency and duration.
         </div>
       </div>
     </section>
 
-    <!-- ══════════ 15 · ACCOUNTABILITY ══════════ -->
+    <!-- ══════════ 16 · ACCOUNTABILITY ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 6 · Operator accountability</div>
@@ -779,7 +821,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 16 · BEFORE ══════════ -->
+    <!-- ══════════ 17 · BEFORE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 7 · Before the APS</div>
@@ -796,7 +838,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 17 · DURING ══════════ -->
+    <!-- ══════════ 18 · DURING ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 7 · During the APS</div>
@@ -814,7 +856,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 18 · AFTER ══════════ -->
+    <!-- ══════════ 19 · AFTER ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 7 · After the APS</div>
@@ -834,7 +876,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 19 · ACCEPTANCE ══════════ -->
+    <!-- ══════════ 20 · ACCEPTANCE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 8 · Acceptance criteria</div>
@@ -870,7 +912,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 20 · FAILURE CASCADE ══════════ -->
+    <!-- ══════════ 21 · FAILURE CASCADE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 8 · Consequences</div>
@@ -887,8 +929,8 @@
       </div>
     </section>
 
-    <!-- ══════════ 21 · FAILURE MODES ══════════ -->
-    <section class="slide">
+    <!-- ══════════ 22 · FAILURE MODES (dense) ══════════ -->
+    <section class="slide dense">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 8 · Failure modes</div>
       <h1 class="title">How APS runs fail</h1>
@@ -906,14 +948,14 @@
             <tr><td>Invalidation (not failure)</td><td>Mechanical failure, protocol deviation, power loss</td></tr>
           </tbody>
         </table>
-        <div class="callout" style="margin-top:30px;font-size:28px">
+        <div class="callout" style="margin-top:22px">
           <span class="lbl">Note</span>
           An APS may be <b>invalidated</b> — but invalidation requires investigation and documentation. It is not a free retest.
         </div>
       </div>
     </section>
 
-    <!-- ══════════ 22 · CHECKLIST ══════════ -->
+    <!-- ══════════ 23 · CHECKLIST ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Module 9 · Putting it together</div>
@@ -932,7 +974,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 23 · SUMMARY + QR ══════════ -->
+    <!-- ══════════ 24 · SUMMARY + QR ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="kicker">Summary</div>
@@ -959,7 +1001,7 @@
       </div>
     </section>
 
-    <!-- ══════════ 24 · CLOSE ══════════ -->
+    <!-- ══════════ 25 · CLOSE ══════════ -->
     <section class="slide">
       <img class="slide-logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXNcmxfNgNJtcBHBzyYf7S20E5bHQiHKVmjeYl6hXw1g&s=10" alt="">
       <div class="close-wrap">
@@ -995,7 +1037,7 @@
 </div>
 
 <div id="bar"></div>
-<div id="counter">1 / 24</div>
+<div id="counter">1 / 25</div>
 
 <button id="fs" class="no-advance" aria-label="Toggle fullscreen" title="Fullscreen (F)">
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1100,6 +1142,7 @@
       t.appendChild(num);
 
       t.addEventListener('click', function (e) {
+        e.preventDefault();
         e.stopPropagation();
         show(i);
         closeOverview();
@@ -1127,17 +1170,22 @@
     ov.classList.contains('open') ? closeOverview() : openOverview();
   }
 
-  btnPrev.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
-  btnNext.addEventListener('click', function (e) { e.stopPropagation(); next(); });
-  btnOv.addEventListener('click', function (e) { e.stopPropagation(); toggleOverview(); });
+  btnPrev.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); prev(); });
+  btnNext.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); next(); });
+  btnOv.addEventListener('click',   function (e) { e.preventDefault(); e.stopPropagation(); toggleOverview(); });
   [btnPrev, btnNext, btnOv].forEach(function (b) {
     b.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
   });
 
   /* ---------- pointer: tap to advance, swipe to navigate ---------- */
-  var startX = 0, startY = 0, startT = 0, moved = false;
+  var startX = 0, startY = 0, startT = 0, moved = false, uiTouch = false;
+
+  function isUI(el) {
+    return !!(el && el.closest && el.closest('.no-advance'));
+  }
 
   document.addEventListener('pointerdown', function (e) {
+    uiTouch = isUI(e.target);
     startX = e.clientX;
     startY = e.clientY;
     startT = Date.now();
@@ -1151,6 +1199,8 @@
   }, { passive: true });
 
   document.addEventListener('pointerup', function (e) {
+    /* never advance/retreat from a click on UI chrome or the video player */
+    if (uiTouch || isUI(e.target)) { uiTouch = false; return; }
     if (ov.classList.contains('open')) return;
 
     var dx = e.clientX - startX;
@@ -1161,14 +1211,14 @@
       return;
     }
 
-    if (e.target.closest && e.target.closest('.no-advance')) return;
-
     if (!moved && (Date.now() - startT) < 600) {
       next();
     }
   });
 
-  document.addEventListener('pointercancel', function () { moved = true; });
+  document.addEventListener('pointercancel', function () {
+    moved = true; uiTouch = false;
+  });
 
   /* ---------- keyboard ---------- */
   document.addEventListener('keydown', function (e) {
@@ -1212,6 +1262,7 @@
     }
   }
   fsBtn.addEventListener('click', function (e) {
+    e.preventDefault();
     e.stopPropagation();
     toggleFullscreen();
   });
